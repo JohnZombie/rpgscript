@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 ##########################
 # Character Class Variables
 ##########################
@@ -29,39 +27,75 @@ map4=$(echo Witch Central)
 
 
 ###################################
-# Function for encounters/adventures
+# ASCII Art Functions 
+###################################
+function intro_ascii_art ()
+{
+echo "        ,     \    /      ,        "
+echo "       / \    )\__/(     / \       "
+echo "      /   \  (_\  /_)   /   \      "
+echo " ____/_____\__\@  @/___/_____\____ "
+echo "|             |\../|              |"
+echo "|              \VV/               |"
+echo "|  Welcome to the bash RPG game   |"
+echo "|_________________________________|"
+echo " |    /\ /      \\       \ /\    | "
+echo " |  /   V        ))       V   \  | "
+echo " |/            //               \| "
+echo "               \V                  "
+}
+
+function warrior_ascii_art ()
+{
+echo "      /( /\ )\      "
+echo "      |/ \/ \|      "
+echo "      |- __ -|      "
+echo "      | -  - |      "
+echo "      |  ||  |      " 
+echo "  \\\_ ,_||_, _///  "
+echo "| \\\\        //// |"
+}
+
+
+
+###################################
+# Function for Name Input
 ####################################
 function get_player_name ()
 {
 echo " Please enter your name and hit enter..."
 get_player_name_input=
-while [[ $input = "" ]]; do
+while [[ $get_player_name_input = "" ]]; do
    read get_player_name_input
 done
 }
 
+function get_player_confirmation ()
+{
+while [[ $response != "y" ]]; do
+	read -r -p "Are you sure? [y/N] " response
+	if [[ "$response" =~ ^(yes|y)$ ]]
+	then
+		clear
+	else
+		get_player_name
+	fi
+   echo " Please make a selection of y/N..."
+done
+}
 
-echo '  ,     \    /      ,       
-       / \    )\__/(     / \       
-      /   \  (_\  /_)   /   \      
- ____/_____\__\@  @/___/_____\____ 
-|             |\../|              |
-|              \VV/               |
-|  Welcome to the bash RPG game   |
-|_________________________________|
- |    /\ /      \\       \ /\    | 
- |  /   V        ))       V   \  | 
- |/     `       //        '     \| 
-echo            V                ' '
 
+####################################
+# Fucntion for Maps
+####################################
 
 
 ##################
 # Name Entering
 ##################
+intro_ascii_art
 
 get_player_name
-
 echo
 echo
 echo
@@ -69,23 +103,14 @@ echo
 
 clear
 
+get_player_confirmation
+echo
+echo
+echo
+echo
+echo
 
-read -r -p "Are you sure? [y/N] " response
-
-case "$response" in
-    [yY][eE][sS]|[yY]) 
-        clear
-        ;;
-    *)
-        echo " Please make a selection of y/N..."
-        ;;
-esac
-
-echo
-echo
-echo
-echo
-echo
+clear
 
 #######################
 #Character Selection
@@ -102,7 +127,9 @@ echo "4 - $char4"
 read class;
 
 case $class in
-        1) echo " You have chosen the $char1. The $char1 is a good all-round choice due to the character’s combination of high Strength and Dexterity. ";;  
+        1) echo " You have chosen the $char1. The $char1 is a good all-round choice due to the character’s combination of high Strength and Dexterity. "
+		warrior_ascii_art
+		;;
         2) echo " You have chosen the $char2. Magic is your primary weapon. Their high Attunement and Intelligence makes learning more sorcery and pyromancy very easy.";;
         3) echo " You have chosen the $char3. $char3's have the ability to heal and are failry balanced with learning abilities.";;
         4) echo " You have chosen the $char4. $char4's aren't a resilient class due to light armor, very low Vitality and a weak shield, but have high mobility. The attack speed of the $char4's Knife makes it a solid one on one weapon.";;
