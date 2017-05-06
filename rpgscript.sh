@@ -11,10 +11,10 @@ char4=$(echo Thief)
 #########################
 # Character Stat Variables
 #########################
-char1_stat1=$(echo Strength)
-char2_stat1=$(echo Intelligance)
-char3_stat1=$(echo Healing)
-char4_stat1=$(echo Speed)
+stat1=$(echo Strength)
+stat2=$(echo Intelligance)
+stat3=$(echo Healing)
+stat4=$(echo Speed)
 
 
 ####################
@@ -84,9 +84,28 @@ while [[ $response != "y" ]]; do
 done
 }
 
+####################################
+# Function for character stats
+####################################
+function create_character_stats ()
+{
+	echo $stat1
+	stat1_num=$(echo $((1 + RANDOM % 10)))
+	echo $stat1_num
+	echo $stat2
+	stat2_num=$(echo $((1 + RANDOM % 10)))
+	echo $stat2_num
+	echo $stat3
+	stat3_num=$(echo $((1 + RANDOM % 10)))
+	echo $stat3_num
+	echo $stat4
+	stat4_num=$(echo $((1 + RANDOM % 10)))
+	echo $stat4_num
+}
+
 
 ####################################
-# Fucntion for Maps
+# Function for Maps
 ####################################
 
 
@@ -129,9 +148,10 @@ read class;
 case $class in
         1) echo " You have chosen the $char1. The $char1 is a good all-round choice due to the character’s combination of high Strength and Dexterity. "
 		warrior_ascii_art
+		create_character_stats
 		;;
         2) echo " You have chosen the $char2. Magic is your primary weapon. Their high Attunement and Intelligence makes learning more sorcery and pyromancy very easy.";;
-        3) echo " You have chosen the $char3. $char3's have the ability to heal and are failry balanced with learning abilities.";;
+        3) echo " You have chosen the $char3. $char3's have the ability to heal and are fairly balanced with learning abilities.";;
         4) echo " You have chosen the $char4. $char4's aren't a resilient class due to light armor, very low Vitality and a weak shield, but have high mobility. The attack speed of the $char4's Knife makes it a solid one on one weapon.";;
         *) echo " Please pick a class from the list. ";;
 
