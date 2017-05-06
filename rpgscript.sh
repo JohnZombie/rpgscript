@@ -1,4 +1,23 @@
 #!/bin/bash
+####################
+# Character Class/Traits/Stats variables
+####################
+char1=$(echo Warrior)
+char2=$(echo Sorcerer)
+char3=$(echo Cleric)
+char4=$(echo Thief)
+
+
+####################
+# Location Class/Traits/Stats variables
+####################
+
+
+
+
+####################
+# Function for encounters/adventures/etc
+####################
 
 
 
@@ -15,7 +34,6 @@ echo '  ,     \    /      ,
  |/     `       //        '     \| 
 echo            V                ' '
 
-
 echo " This game requires the use of the enter key and input to proceed.. "
 
 read
@@ -26,15 +44,15 @@ read name
 
 echo " Hello $name, Please pick a character class and hit enter... "
 
-echo "1 - Warrior"
-echo "2 - Sorcerer"
-echo "3 - Cleric"
-echo "4 - Thief"
+echo "1 - $char1"
+echo "2 - $char2"
+echo "3 - $char3"
+echo "4 - $char4"
 
 read class;
 
 case $class in
-        1) echo " You have chosen the warrior. The Warrior is a good all-round choice due to the character’s combination of high Strength and Dexterity. ";;  
+        1) echo " You have chosen the $char1. The $char1 is a good all-round choice due to the character’s combination of high Strength and Dexterity. ";;  
         2) echo " You have chosen the sorcerer. Magic is your primary weapon. Their high Attunement and Intelligence makes learning more sorcery and pyromancy very easy.";;
         3) echo " You have chosen the cleric. Clerics have the ability to heal and are failry balanced with learning abilities.";;
         4) echo " You have chosen the thief. Thieves aren't a resilient class due to light armor, very low Vitality and a weak shield, but have high mobility. The attack speed of the Bandit's Knife makes it a solid one on one weapon.";;
