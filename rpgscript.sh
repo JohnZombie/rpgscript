@@ -17,6 +17,27 @@ stat3=$(echo Healing)
 stat4=$(echo Speed)
 
 
+
+#########################
+# Declare varible types as integers
+#########################
+declare -i stat1_num_base
+declare -i stat2_num_base
+declare -i stat3_num_base
+declare -i stat4_num_base
+
+declare -i stat1_num_rand
+declare -i stat2_num_rand
+declare -i stat3_num_rand
+declare -i stat4_num_rand
+
+declare -i stat1_num_final
+declare -i stat2_num_final
+declare -i stat3_num_final
+declare -i stat4_num_final
+
+
+
 ####################
 # Map Variables
 ####################
@@ -87,22 +108,51 @@ done
 ####################################
 # Function for character stats
 ####################################
-function create_character_stats ()
+function set_base_stats ()
 {
-	echo $stat1
-	stat1_num=$(echo $((1 + RANDOM % 10)))
-	echo $stat1_num
-	echo $stat2
-	stat2_num=$(echo $((1 + RANDOM % 10)))
-	echo $stat2_num
-	echo $stat3
-	stat3_num=$(echo $((1 + RANDOM % 10)))
-	echo $stat3_num
-	echo $stat4
-	stat4_num=$(echo $((1 + RANDOM % 10)))
-	echo $stat4_num
+	if [[ $class == "1" ]]; then
+		stat1_num_base=3
+		stat2_num_base=1
+		stat3_num_base=1
+		stat4_num_base=1
+	elif [[ $class == "2" ]]; then
+		stat1_num_base=1
+		stat2_num_base=3
+		stat3_num_base=1
+		stat4_num_base=1
+	elif [[ $class == "3" ]]; then
+		stat1_num_base=1
+		stat2_num_base=1
+		stat3_num_base=3
+		stat4_num_base=1
+	elif [[ $class == "4" ]]; then
+		stat1_num_base=1
+		stat2_num_base=1
+		stat3_num_base=1
+		stat4_num_base=3
+	fi
 }
 
+function create_character_stats ()
+{
+	set_base_stats
+	echo $stat1
+		stat1_num_rand=$(echo $(( 1 + RANDOM % 7)))
+		stat1_num_final=$(( stat1_num_rand + stat1_num_base ))
+		echo Your character stat is: $stat1_num_final
+	echo $stat2
+		stat2_num_rand=$(echo $(( 1  + RANDOM % 7)))
+		stat2_num_final=$((stat2_num_rand + stat2_num_base))
+		echo Your character stat is: $stat2_num_final
+	echo $stat3
+		stat3_num_rand=$(echo $(( 1 + RANDOM % 7)))
+		stat3_num_final=$((stat3_num_rand + stat3_num_base))
+		echo Your character stat is: $stat3_num_final
+	echo $stat4
+		stat4_num_rand=$(echo $(( 1 + RANDOM % 7)))
+		stat4_num_final=$((stat4_num_rand + stat4_num_base))
+		echo Your character stat is: $stat4_num_final
+}
 
 ####################################
 # Function for Maps
@@ -135,7 +185,6 @@ clear
 #Character Selection
 #######################
 
-
 echo " Hello $player_name_input, Please pick a character class and hit enter. "
 
 echo "1 - $char1"
@@ -151,12 +200,15 @@ case $class in
 		create_character_stats
 		;;
         2) echo " You have chosen the $char2. Magic is your primary weapon. Their high Attunement and Intelligence makes learning more sorcery and pyromancy very easy."
+		
 		create_character_stats
 		;;
         3) echo " You have chosen the $char3. $char3's have the ability to heal and are fairly balanced with learning abilities."
+		
 		create_character_stats
 		;;
         4) echo " You have chosen the $char4. $char4's aren't a resilient class due to light armor, very low Vitality and a weak shield, but have high mobility. The attack speed of the $char4's Knife makes it a solid one on one weapon."
+		
 		create_character_stats
 		;;
         *) echo " Please pick a class from the list. ";;
