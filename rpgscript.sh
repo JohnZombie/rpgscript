@@ -78,6 +78,19 @@ echo "| \\\\        //// |"
 }
 
 
+###################################
+# Transition Function
+###################################
+function transition_screen ()
+{
+echo
+echo
+echo
+echo
+
+clear
+}
+
 
 ###################################
 # Function for Name Input
@@ -165,21 +178,12 @@ function create_character_stats ()
 intro_ascii_art
 
 get_player_name
-echo
-echo
-echo
-echo
 
-clear
+transition_screen
 
 get_player_confirmation
-echo
-echo
-echo
-echo
-echo
 
-clear
+transition_screen
 
 #######################
 #Character Selection
@@ -214,16 +218,19 @@ case $class in
         *) echo " Please pick a class from the list. ";;
 esac
 
+transition_screen
+
 echo " Press enter to embark on your journey...Evil awaits you. "
 
 read
 
-clear
+transition_screen
 
 echo " You have arrived ashore to the Lost Island.. "
 
 read
 
+transition_screen
 
 echo " Where do you go next? "
 
