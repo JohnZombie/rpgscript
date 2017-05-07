@@ -83,12 +83,13 @@ echo "| \\\\        //// |"
 ###################################
 function transition_screen ()
 {
-echo
-echo
-echo
-echo
-
 clear
+echo "
+#####################################################################################################
+Name: $player_name_input ****  $stat1: $stat1_num_final **** $stat2: $stat2_num_final **** $stat3: $stat3_num_final ****  $stat4: $stat4_num_final
+#####################################################################################################
+"
+
 }
 
 
@@ -175,15 +176,15 @@ function create_character_stats ()
 ##################
 # Name Entering
 ##################
+
+
 intro_ascii_art
 
 get_player_name
 
-transition_screen
-
 get_player_confirmation
 
-transition_screen
+
 
 #######################
 #Character Selection
@@ -218,7 +219,6 @@ case $class in
         *) echo " Please pick a class from the list. ";;
 esac
 
-transition_screen
 
 echo " Press enter to embark on your journey...Evil awaits you. "
 
