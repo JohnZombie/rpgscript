@@ -65,8 +65,8 @@ function get_player_name ()
 {
 echo " Please enter your name and hit enter..."
 get_player_name_input=
-while [[ $get_player_name_input = "" ]]; do
-   read get_player_name_input
+while [[ $player_name_input = "" ]]; do
+   read player_name_input
 done
 }
 
@@ -136,7 +136,7 @@ clear
 #######################
 
 
-echo " Hello $name, Please pick a character class and hit enter. "
+echo " Hello $player_name_input, Please pick a character class and hit enter. "
 
 echo "1 - $char1"
 echo "2 - $char2"
@@ -150,11 +150,16 @@ case $class in
 		warrior_ascii_art
 		create_character_stats
 		;;
-        2) echo " You have chosen the $char2. Magic is your primary weapon. Their high Attunement and Intelligence makes learning more sorcery and pyromancy very easy.";;
-        3) echo " You have chosen the $char3. $char3's have the ability to heal and are fairly balanced with learning abilities.";;
-        4) echo " You have chosen the $char4. $char4's aren't a resilient class due to light armor, very low Vitality and a weak shield, but have high mobility. The attack speed of the $char4's Knife makes it a solid one on one weapon.";;
+        2) echo " You have chosen the $char2. Magic is your primary weapon. Their high Attunement and Intelligence makes learning more sorcery and pyromancy very easy."
+		create_character_stats
+		;;
+        3) echo " You have chosen the $char3. $char3's have the ability to heal and are fairly balanced with learning abilities."
+		create_character_stats
+		;;
+        4) echo " You have chosen the $char4. $char4's aren't a resilient class due to light armor, very low Vitality and a weak shield, but have high mobility. The attack speed of the $char4's Knife makes it a solid one on one weapon."
+		create_character_stats
+		;;
         *) echo " Please pick a class from the list. ";;
-
 esac
 
 echo " Press enter to embark on your journey...Evil awaits you. "
