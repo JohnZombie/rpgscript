@@ -1,16 +1,25 @@
 #!/bin/bash
-##########################
+
+
+##########################################
+# Clears entire screen before game launches
+##########################################
+
+clear
+
+
+###########################
 # Character Class Variables
-##########################
+###########################
 char1=$(echo Warrior)
 char2=$(echo Sorcerer)
 char3=$(echo Cleric)
 char4=$(echo Thief)
 
 
-#########################
+##########################
 # Character Stat Variables
-#########################
+##########################
 stat1=$(echo Strength)
 stat2=$(echo Intelligance)
 stat3=$(echo Healing)
@@ -18,9 +27,9 @@ stat4=$(echo Speed)
 
 
 
-#########################
+##################################
 # Declare varible types as integers
-#########################
+###################################
 declare -i stat1_num_base
 declare -i stat2_num_base
 declare -i stat3_num_base
@@ -85,9 +94,9 @@ function transition_screen ()
 {
 clear
 echo "
-#####################################################################################################
+[O\\\\\[========================-[O\\\\\[========================-[O\\\\\[========================-[O\\\\\[========================-##############
 Name: $player_name_input ****  $stat1: $stat1_num_final **** $stat2: $stat2_num_final **** $stat3: $stat3_num_final ****  $stat4: $stat4_num_final
-#####################################################################################################
+[O\\\\\[========================-[O\\\\\[========================-[O\\\\\[========================-[O\\\\\[========================-##############
 "
 
 }
@@ -105,18 +114,36 @@ while [[ $player_name_input = "" ]]; do
 done
 }
 
+
+
+################################
+# Function for Player Confirmation
+###############################
 function get_player_confirmation ()
 {
+
 while [[ $response != "y" ]]; do
 	read -r -p "Are you sure? [y/N] " response
-	if [[ "$response" =~ ^(yes|y)$ ]]
+	if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]];
 	then
 		clear
-	else
-		get_player_name
-	fi
-   echo " Please make a selection of y/N..."
+	
+
+ elif [[ "$response" =~ ^([nN][oO][nN])+$ ]]; then
+       
+ get_player_name
+        
+        elif [[ "$response" == "" ]]; then
+
+     echo " Please make a selection of y/N..."
+fi
+
 done
+
+
+
+
+
 }
 
 ####################################
