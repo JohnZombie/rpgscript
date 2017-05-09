@@ -129,21 +129,6 @@ _______________''.--o/___  \_______________(_)___________
    ~                  ~    ~ ~                 ~        "
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 ###################################
@@ -325,6 +310,13 @@ echo
 echo
 echo
 
+
+
+
+transition_screen 
+
+
+
 echo " Press enter to embark on your journey...Evil awaits you. "
 
 
@@ -335,6 +327,10 @@ clear
 ############################################
 # Map Selections
 ###########################################
+
+
+transition_screen 
+
 echo " You have arrived ashore to the Lost Island.. "
 
 read
