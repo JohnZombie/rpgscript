@@ -77,15 +77,74 @@ echo "               \V                  "
 
 function warrior_ascii_art ()
 {
-echo "      /( /\ )\      "
-echo "      |/ \/ \|      "
-echo "      |- __ -|      "
-echo "      | -  - |      "
-echo "      |  ||  |      " 
-echo "  \\\_ ,_||_, _///  "
-echo "| \\\\        //// |"
-}
 
+
+
+echo -n $'\E[31m'
+echo $''
+echo $'      _,.'
+echo $'    ,` -.)'
+echo $'   \'( _/\'-\\\\-.'
+echo $'  /,|`--._,-^|          ,'
+echo $'  \\_| |`-._/||          ,\'|'
+echo $'    |  `-, / |         /  /'
+echo $'    |     || |        /  /'
+echo $'     `r-._||/   __   /  /'
+echo $' __,-<_     )`-/  `./  /'
+echo $'\'  \\   `---\'   \\   /  /'
+echo $'    |           |./  /'
+echo $'    /           //  /'
+echo $'\\_/\' \\         |/  /'
+echo $' |    |   _,^-\'/  /'
+echo $' |    , ``  (\\/  /_'
+echo $'  \\,.->._    \\X-=/^'
+echo $'  (  /   `-._//^`'
+echo $'   `Y-.____(__}'
+echo $'    |     {__)'
+echo $'          ()`'
+
+
+
+}
+ 
+function map_ascii_art ()
+{
+
+echo "        '(___(_____)      __           '.   \  :  /   .'
+                     /. _\            '.  \ : /  .'
+                .--.|/_/__      -----____   _  _____-----
+_______________''.--o/___  \_______________(_)___________
+       ~        /.'o|_o  '.|  ~                   ~   ~
+  ~            |/   |_|  ~'         ~
+               '  ~ |_|        ~       ~     ~     ~
+      ~    ~        |_|O  ~                       ~
+             ~      |_||_____     ~       ~    ~
+   ~    ~      .'':.|_|A:. ..::''.
+             /:.  .:|_|.\ .:.  :.:\   ~
+  ~         :..:. .:. .::..:  .:  ..:.       ~   ~    ~
+             \.: .:  :. .: ..:: .lcf/
+    ~      ~      ~    ~    ~         ~
+               ~           ~    ~   ~             ~
+        ~         ~            ~   ~                 ~
+   ~                  ~    ~ ~                 ~        "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 ###################################
 # Transition Function
@@ -112,7 +171,14 @@ get_player_name_input=
 while [[ $player_name_input = "" ]]; do
    read player_name_input
 done
+
+
+clear
+
+
 }
+
+
 
 
 
@@ -121,28 +187,23 @@ done
 ###############################
 function get_player_confirmation ()
 {
-
-while [[ $response != "y" ]]; do
-	read -r -p "Are you sure? [y/N] " response
-	if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]];
-	then
-		clear
 	
 
- elif [[ "$response" =~ ^([nN][oO][nN])+$ ]]; then
-       
- get_player_name
-        
-        elif [[ "$response" == "" ]]; then
 
-     echo " Please make a selection of y/N..."
-fi
-
+	
+while [[ $response != "y" ]]; do
+        read -r -p "Are you sure? [y/n] " response
+        if [[ "$response" =~ ^(y)$ ]]; then
+                clear
+        elif [[ "$response" =~ ^(n)$ ]]; then
+                player_name_input=$(echo "")
+                clear
+                get_player_name
+        fi
 done
 
-
-
-
+clear
+       
 
 }
 
@@ -226,38 +287,60 @@ echo "4 - $char4"
 
 read class;
 
+clear
+
 case $class in
-        1) echo " You have chosen the $char1. The $char1 is a good all-round choice due to the character’s combination of high Strength and Dexterity. "
-		warrior_ascii_art
+        
+
+
+        1) echo " You have chosen the $char1. The $char1 is known for his strength in combat. "
+		
+              
+                warrior_ascii_art
 		create_character_stats
-		;;
+                ;;
         2) echo " You have chosen the $char2. Magic is your primary weapon. Their high Attunement and Intelligence makes learning more sorcery and pyromancy very easy."
 		
 		create_character_stats
-		;;
+                ;;
         3) echo " You have chosen the $char3. $char3's have the ability to heal and are fairly balanced with learning abilities."
 		
-		create_character_stats
-		;;
+		
+                
+                create_character_stats
+                ;;
         4) echo " You have chosen the $char4. $char4's aren't a resilient class due to light armor, very low Vitality and a weak shield, but have high mobility. The attack speed of the $char4's Knife makes it a solid one on one weapon."
 		
+                
 		create_character_stats
-		;;
+                ;;
+                
         *) echo " Please pick a class from the list. ";;
 esac
 
+echo
+echo
+echo
+echo
+echo
+echo
 
 echo " Press enter to embark on your journey...Evil awaits you. "
 
+
 read
 
-transition_screen
+clear
 
+############################################
+# Map Selections
+###########################################
 echo " You have arrived ashore to the Lost Island.. "
 
 read
 
-transition_screen
+map_ascii_art 
+
 
 echo " Where do you go next? "
 
@@ -269,7 +352,7 @@ echo "4 - $map4"
 read next;
 
 case $next in
-      1) echo " You have chosen to wander $map1. Be aware, Those who walk these woods become possesed by pure evil. ";;
+      1) echo " You have chosen to wander $map1. Be aware, Those who walk these woods become possessed by pure evil. ";;
       2) echo " You have chosen to explore the $map2 .....The dead never sleep and are always hungry for flesh. ";;
       3) echo " You have chosen to visit $map3. The heat will consume you...Stay away from the gold! ";;
       4) echo " You have chosen to walk $map4 .... The magic is strong here,the sun is never present, Stay aware of your surroundings.";;
