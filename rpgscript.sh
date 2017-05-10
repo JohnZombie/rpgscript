@@ -19,12 +19,38 @@ char4=$(echo Thief)
 
 ##########################
 # Character Stat Variables
-##########################
+########################## 
 stat1=$(echo Strength)
 stat2=$(echo Intelligance)
-stat3=$(echo Healing)
+stat3=$(echo HP)
 stat4=$(echo Speed)
+stat4=$(echo Defense)
 
+####################################
+# Items and Weapons
+####################################
+item1=$(echo Antidote)
+item2=$(echo Healing Potion)
+item3=$(echo Healing Herb)
+item4=$(echo ATK Boost)
+item5=$(echo DEF Boost)
+item6=$(echo MAG Boost)
+item7=$(echo Protection fairy) 
+item8=$(echo Elixer)
+weap1=$(echo Flaming Sword)
+weap2=$(echo Dragon Sword)
+weap3=$(echo Cursed Staff)
+weap4=$(echo Bewitched Staff)
+weap5=$(echo Divine Staff)
+weap6=$(echo Crystal Staff)
+weap7=$(echo Ice Blade)
+weap8=$(echo Thunder Blade)
+
+#Default Character Weapons
+defweap1=$(echo Rusty Sword)
+defweap2=$(echo Burned Staff)
+defweap3=$(echo Blessed Staff)
+defweap4=$(echo Blood Stained knife)
 
 
 ##################################
@@ -54,6 +80,22 @@ map1=$(echo The Possessed Woods)
 map2=$(echo City of The Dead)
 map3=$(echo Dragon Alley)
 map4=$(echo Witch Central)
+
+
+
+############################################
+# Soul Encounters for The Lost Woods
+###########################################
+creat1="Lost Ghoul"
+creat2="Demented Ghost"
+creat3="Ghost Knight"
+Boss1="Possessed Knight"
+
+
+
+
+
+
 
 
 ###################################
@@ -164,9 +206,6 @@ clear
 }
 
 
-
-
-
 ################################
 # Function for Player Confirmation
 ###############################
@@ -191,6 +230,34 @@ clear
        
 
 }
+
+##########################################
+# Battle Confirmation Function
+##########################################
+function battle_confirmation ()
+{
+
+while [[ $confirmation != "y" ]]; do
+        read -r -p "Are you sure you wish to battle this creature? [y/n] " confirmation
+        if [[ "$confirmation" =~ ^(y)$ ]]; then
+                clear
+        elif [[ "$confirmation" =~ ^(n)$ ]]; then
+                echo " You are a coward!....."
+                clear
+                
+        fi
+done
+
+clear
+
+
+}
+
+
+
+
+
+
 
 ####################################
 # Function for character stats
@@ -338,21 +405,52 @@ read
 map_ascii_art 
 
 
-echo " Where do you go next? "
+echo "Choose a map that you wish to explore. "
 
 echo "1 - $map1"
 echo "2 - $map2"
 echo "3 - $map3"
 echo "4 - $map4"
 
-read next;
+read explore;
 
-case $next in
+case $explore in
       1) echo " You have chosen to wander $map1. Be aware, Those who walk these woods become possessed by pure evil. ";;
       2) echo " You have chosen to explore the $map2 .....The dead never sleep and are always hungry for flesh. ";;
       3) echo " You have chosen to visit $map3. The heat will consume you...Stay away from the gold! ";;
       4) echo " You have chosen to walk $map4 .... The magic is strong here,the sun is never present, Stay aware of your surroundings.";;
       *) echo " Please chose your destination for travel.";;
 esac
+
+echo " What will you do next? "
+
+echo "1 -Search the Woods for items"
+echo "2 -Battle Enemies"
+echo "3 -Leave The Possessed Woods"
+echo "4 -Find The Possessed Knight"
+
+read choice;
+
+clear
+
+case $choice in
+     1) echo " You have decided to search the woods for items and found a $item3 ! ";;
+     2) echo " Wandering The Possessed Woods  you have come across a $creat1...Do you wish to battle this creature?"
+        battle_confirmation
+        ;;
+     3) echo " You have chosen to leave this map.";;
+     4) echo " Are you ready to face The Possessed Knight?...This enemy is powerful.";;
+     *) echo " Please make a selection from the list....";;
+
+esac
+
+
+
+
+
+
+
+
+
 
 
