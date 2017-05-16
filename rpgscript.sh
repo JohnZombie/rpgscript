@@ -26,6 +26,42 @@ stat3=$(echo HP)
 stat4=$(echo Speed)
 stat4=$(echo Defense)
 
+
+
+#######################################
+# Attack Moves For Each Character Class
+#######################################
+
+#Warrior attack moves
+war1=$(echo Super Slash)
+war2=$(echo Sword Spin Slash)
+war3=$(echo Downward Jump Slash)
+war3=$(echo Air  Slash)
+
+
+
+#Sorcerer attack moves
+sor1=$(echo Fire Ball)
+sor2=$(echo Ice Blast)
+sor3=$(echo Fairy Swarm)
+sor4=$(echo Ocean Wave Summon)
+
+#cleric attack Moves
+
+cle1=$(echo Staff Swing)
+cle2=$(echo Heal)
+cle3=$(echo Healing Wind)
+cle4=$(echo Mighty Staff Swing)
+
+#Thief attack moves
+
+thi1=$(echo Stealth Stab)
+thi2=$(echo Poison Stab)
+thi3=$(echo Fire Stab)
+thi4=$(echo Stabs of Fury)
+
+
+
 ####################################
 # Items and Weapons
 ####################################
@@ -51,6 +87,7 @@ defweap1=$(echo Rusty Sword)
 defweap2=$(echo Burned Staff)
 defweap3=$(echo Blessed Staff)
 defweap4=$(echo Blood Stained knife)
+
 
 
 ##################################
@@ -84,7 +121,7 @@ map4=$(echo Witch Central)
 
 
 ############################################
-# Soul Encounters for The Lost Woods
+# Creature  Encounters for The Lost Woods
 ###########################################
 creat1="Lost Ghoul"
 creat2="Demented Ghost"
@@ -240,7 +277,13 @@ function battle_confirmation ()
 while [[ $confirmation != "y" ]]; do
         read -r -p "Are you sure you wish to battle this creature? [y/n] " confirmation
         if [[ "$confirmation" =~ ^(y)$ ]]; then
-                clear
+                echo "You have chose to battle this creature"
+                read 
+                echo " Please select an attack move from the list. "
+case attack;
+            
+           1) echo "
+               
         elif [[ "$confirmation" =~ ^(n)$ ]]; then
                 echo " You are a coward!....."
                 clear
