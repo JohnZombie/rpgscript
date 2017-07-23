@@ -28,66 +28,6 @@ stat4=$(echo Defense)
 
 
 
-#######################################
-# Attack Moves For Each Character Class
-#######################################
-
-#Warrior attack moves
-war1=$(echo Super Slash)
-war2=$(echo Sword Spin Slash)
-war3=$(echo Downward Jump Slash)
-war3=$(echo Air  Slash)
-
-
-
-#Sorcerer attack moves
-sor1=$(echo Fire Ball)
-sor2=$(echo Ice Blast)
-sor3=$(echo Fairy Swarm)
-sor4=$(echo Ocean Wave Summon)
-
-#cleric attack Moves
-
-cle1=$(echo Staff Swing)
-cle2=$(echo Heal)
-cle3=$(echo Healing Wind)
-cle4=$(echo Mighty Staff Swing)
-
-#Thief attack moves
-
-thi1=$(echo Stealth Stab)
-thi2=$(echo Poison Stab)
-thi3=$(echo Fire Stab)
-thi4=$(echo Stabs of Fury)
-
-
-
-####################################
-# Items and Weapons
-####################################
-item1=$(echo Antidote)
-item2=$(echo Healing Potion)
-item3=$(echo Healing Herb)
-item4=$(echo ATK Boost)
-item5=$(echo DEF Boost)
-item6=$(echo MAG Boost)
-item7=$(echo Protection fairy) 
-item8=$(echo Elixer)
-weap1=$(echo Flaming Sword)
-weap2=$(echo Dragon Sword)
-weap3=$(echo Cursed Staff)
-weap4=$(echo Bewitched Staff)
-weap5=$(echo Divine Staff)
-weap6=$(echo Crystal Staff)
-weap7=$(echo Ice Blade)
-weap8=$(echo Thunder Blade)
-
-#Default Character Weapons
-defweap1=$(echo Rusty Sword)
-defweap2=$(echo Burned Staff)
-defweap3=$(echo Blessed Staff)
-defweap4=$(echo Blood Stained knife)
-
 
 
 ##################################
@@ -280,9 +220,7 @@ while [[ $confirmation != "y" ]]; do
                 echo "You have chose to battle this creature"
                 read 
                 echo " Please select an attack move from the list. "
-case attack;
-            
-           1) echo "
+
                
         elif [[ "$confirmation" =~ ^(n)$ ]]; then
                 echo " You are a coward!....."
@@ -467,7 +405,7 @@ esac
 
 echo " What will you do next? "
 
-echo "1 -Search the Woods for items"
+echo "1 -Wander the woods"
 echo "2 -Battle Enemies"
 echo "3 -Leave The Possessed Woods"
 echo "4 -Find The Possessed Knight"
