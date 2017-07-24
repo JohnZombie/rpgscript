@@ -60,19 +60,55 @@ map4=$(echo Witch Central)
 
 
 
+
+##################################
+# Map Selection Fucntion 
+##################################
+function map_function ()
+
+
+{
+
+echo "Choose a map that you wish to explore. "
+
+echo "1 - $map1"
+echo "2 - $map2"
+echo "3 - $map3"
+echo "4 - $map4"
+
+read explore;
+
+}
+
+##################################
+# Revert to map selection function
+###################################
+function revert_map_selection ()
+
+{
+
+echo " You have chose to leave this map... "
+read
+
+map_function
+
+}
+
+
+
+
+
+
+
 ############################################
-# Creature  Encounters for The Lost Woods
+# Creature  Encounters for The Possesed Woods
 ###########################################
-creat1="Lost Ghoul"
-creat2="Demented Ghost"
-creat3="Ghost Knight"
+
+creature[0]="Lost Ghoul"
+creature[1]="Demented Ghost"
+creature[2]="Ghost Knight"
+
 Boss1="Possessed Knight"
-
-
-
-
-
-
 
 
 ###################################
@@ -235,6 +271,48 @@ clear
 }
 
 
+########################################
+# Function for Battle Damage Number Roll
+########################################
+function battle_damage_dice_roll ()
+{
+
+
+echo " Hit enter to roll dice for damage. You must roll a number higher than 5 to destroy this creature. "
+read
+
+
+battle_damage_dice_roll=$((( RANDOM % 10 )  + 1 ))
+
+echo " You did $battle_damage_dice_roll damage to creature. "
+
+
+if [[ $battle_damage_dice_roll -gt 5 ]]
+then
+echo " You have defeated this creature. "
+
+elif [[ $battle_damage_dice_roll -lt 5 ]]
+then 
+echo " You have been defeated by this creature..Try again "
+
+fi
+
+}
+
+
+##########################################
+# Random Creature Generator Function 
+###########################################
+function random_creature_generator_lost_woods ()
+{
+
+random_creature_generator_lost_woods=$(( RANDOM % 3 ))
+
+echo  ${creature[$random_creature_generator_lost_woods]} 
+
+}
+
+
 
 
 
@@ -361,7 +439,6 @@ echo
 
 
 
-transition_screen 
 
 
 
@@ -385,18 +462,11 @@ read
 
 map_ascii_art 
 
+map_function
 
-echo "Choose a map that you wish to explore. "
-
-echo "1 - $map1"
-echo "2 - $map2"
-echo "3 - $map3"
-echo "4 - $map4"
-
-read explore;
 
 case $explore in
-      1) echo " You have chosen to wander $map1. Be aware, Those who walk these woods become possessed by pure evil. ";;
+      1) echo " You have chosen to wander $map1. Be aware, Those who wander these woods become possessed by pure evil. ";;
       2) echo " You have chosen to explore the $map2 .....The dead never sleep and are always hungry for flesh. ";;
       3) echo " You have chosen to visit $map3. The heat will consume you...Stay away from the gold! ";;
       4) echo " You have chosen to walk $map4 .... The magic is strong here,the sun is never present, Stay aware of your surroundings.";;
@@ -406,7 +476,7 @@ esac
 echo " What will you do next? "
 
 echo "1 -Wander the woods"
-echo "2 -Battle Enemies"
+echo "2 -Battle creatures"
 echo "3 -Leave The Possessed Woods"
 echo "4 -Find The Possessed Knight"
 
@@ -415,11 +485,20 @@ read choice;
 clear
 
 case $choice in
-     1) echo " You have decided to search the woods for items and found a $item3 ! ";;
-     2) echo " Wandering The Possessed Woods  you have come across a $creat1...Do you wish to battle this creature?"
-        battle_confirmation
+     1) echo " You have decided to wander the woods and encountered...."
+       random_creature_generator_lost_woods 
+       battle_damage_dice_roll
+       ;;
+     
+     2) echo " You chose to battle creatures and will fight a... "
+       random_creature_generator_Lost_Woods
+       battle_damage_dice_roll
+       battle_confirmation
         ;;
-     3) echo " You have chosen to leave this map.";;
+     
+     3) echo " You have chosen to leave this map."
+        revert_map_selection
+        ;;
      4) echo " Are you ready to face The Possessed Knight?...This enemy is powerful.";;
      *) echo " Please make a selection from the list....";;
 
