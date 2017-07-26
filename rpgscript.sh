@@ -145,7 +145,7 @@ echo -n $'\E[31m'
 
 
 
-
+}
 
 function map_ascii_art ()
 {
@@ -532,7 +532,6 @@ case $choice in
        battle_damage_dice_roll
        battle_confirmation
         ;;
-     
      3) echo
         revert_map_selection
         ;;
@@ -545,7 +544,6 @@ case $choice in
         echo
         echo
         battle_damage_dice_roll
-        clear
        ;;
      *) echo " Please make a selection from the list....";;
 
