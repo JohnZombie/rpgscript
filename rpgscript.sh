@@ -89,6 +89,7 @@ function revert_map_selection ()
 
 echo " You have chose to leave this map... "
 read
+clear
 
 map_function
 
@@ -133,7 +134,46 @@ echo "               \V                  "
 function warrior_ascii_art ()
 {
 
+echo -n $'\E[31m'
 
+
+
+
+
+
+
+
+
+
+
+
+function map_ascii_art ()
+{
+
+echo "        '(___(_____)      __           '.   \  :  /   .'
+                     /. _\            '.  \ : /  .'
+                .--.|/_/__      -----____   _  _____-----
+_______________''.--o/___  \_______________(_)___________
+       ~        /.'o|_o  '.|  ~                   ~   ~
+  ~            |/   |_|  ~'         ~
+               '  ~ |_|        ~       ~     ~     ~
+      ~    ~        |_|O  ~                       ~
+             ~      |_||_____     ~       ~    ~
+   ~    ~      .'':.|_|A:. ..::''.
+             /:.  .:|_|.\ .:.  :.:\   ~
+  ~         :..:. .:. .::..:  .:  ..:.       ~   ~    ~
+             \.: .:  :. .: ..:: .lcf/
+    ~      ~      ~    ~    ~         ~
+               ~           ~    ~   ~             ~
+        ~         ~            ~   ~                 ~
+   ~                  ~    ~ ~                 ~        "
+
+
+}
+
+function Possessed_Knight ()
+
+{
 
 echo -n $'\E[31m'
 echo $''
@@ -161,30 +201,27 @@ echo $'          ()`'
 
 
 }
- 
-function map_ascii_art ()
-{
-
-echo "        '(___(_____)      __           '.   \  :  /   .'
-                     /. _\            '.  \ : /  .'
-                .--.|/_/__      -----____   _  _____-----
-_______________''.--o/___  \_______________(_)___________
-       ~        /.'o|_o  '.|  ~                   ~   ~
-  ~            |/   |_|  ~'         ~
-               '  ~ |_|        ~       ~     ~     ~
-      ~    ~        |_|O  ~                       ~
-             ~      |_||_____     ~       ~    ~
-   ~    ~      .'':.|_|A:. ..::''.
-             /:.  .:|_|.\ .:.  :.:\   ~
-  ~         :..:. .:. .::..:  .:  ..:.       ~   ~    ~
-             \.: .:  :. .: ..:: .lcf/
-    ~      ~      ~    ~    ~         ~
-               ~           ~    ~   ~             ~
-        ~         ~            ~   ~                 ~
-   ~                  ~    ~ ~                 ~        "
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ###################################
 # Transition Function
@@ -251,13 +288,10 @@ function battle_confirmation ()
 {
 
 while [[ $confirmation != "y" ]]; do
-        read -r -p "Are you sure you wish to battle this creature? [y/n] " confirmation
+        read -r -p " Do you wish to battle this creature? [y/n] " confirmation
         if [[ "$confirmation" =~ ^(y)$ ]]; then
                 echo "You have chose to battle this creature"
-                read 
-                echo " Please select an attack move from the list. "
-
-               
+                 
         elif [[ "$confirmation" =~ ^(n)$ ]]; then
                 echo " You are a coward!....."
                 clear
@@ -278,9 +312,12 @@ function battle_damage_dice_roll ()
 {
 
 
-echo " Hit enter to roll dice for damage. You must roll a number higher than 5 to destroy this creature. "
-read
+battle_confirmation
 
+clear
+
+echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. "
+read
 
 battle_damage_dice_roll=$((( RANDOM % 10 )  + 1 ))
 
@@ -496,10 +533,20 @@ case $choice in
        battle_confirmation
         ;;
      
-     3) echo " You have chosen to leave this map."
+     3) echo
         revert_map_selection
         ;;
-     4) echo " Are you ready to face The Possessed Knight?...This enemy is powerful.";;
+     4) echo " Are you ready to face The Possessed Knight?...This enemy is powerful."
+        echo
+        echo
+        echo
+        echo
+        echo
+        echo
+        echo
+        battle_damage_dice_roll
+        clear
+       ;;
      *) echo " Please make a selection from the list....";;
 
 esac
