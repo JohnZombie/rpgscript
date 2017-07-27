@@ -61,8 +61,14 @@ map4=$(echo Witch Central)
 
 
 
+#######################################################################################################################################################
+# ALL FUNCTIONS :P
+########################################################################################################################################################
+
+
+
 ##################################
-# Map Selection Fucntion 
+# Map Selection Function 
 ##################################
 function map_function ()
 
@@ -205,24 +211,6 @@ echo $'          ()`'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###################################
 # Transition Function
 ###################################
@@ -293,8 +281,8 @@ while [[ $confirmation != "y" ]]; do
                 echo "You have chose to battle this creature"
                  
         elif [[ "$confirmation" =~ ^(n)$ ]]; then
-                echo " You are a coward!....."
-                clear
+                echo " Dont be a coward!!!..... "
+               battle_confirmation
                 
         fi
 done
@@ -404,38 +392,24 @@ function create_character_stats ()
 		echo Your character stat is: $stat4_num_final
 }
 
-####################################
-# Function for Maps
-####################################
-
-
-##################
-# Name Entering
-##################
-
-
-intro_ascii_art
-
-get_player_name
-
-get_player_confirmation
 
 
 
-#######################
-#Character Selection
-#######################
+##############################
+#Character Selection Function
+##############################
 
-echo " Hello $player_name_input, Please pick a character class and hit enter. "
 
-echo "1 - $char1"
-echo "2 - $char2"
-echo "3 - $char3"
-echo "4 - $char4"
+function character_selection ()
+
+{
+echo "1 - Warrior"
+echo "2 - Sorcerer"
+echo "3 - Cleric"
+echo "4 - Thief"
 
 read class;
 
-clear
 
 case $class in
         
@@ -463,7 +437,9 @@ case $class in
 		create_character_stats
                 ;;
                 
-        *) echo " Please pick a class from the list. ";;
+        *) echo " Please pick a class from the list. "
+		character_selection
+		;;
 esac
 
 echo
@@ -473,10 +449,16 @@ echo
 echo
 echo
 
+}
 
 
 
+############################################
+# Map Selections
+###########################################
+function map_selections ()
 
+{
 
 
 echo " Press enter to embark on your journey...Evil awaits you. "
@@ -485,10 +467,6 @@ echo " Press enter to embark on your journey...Evil awaits you. "
 read
 
 clear
-
-############################################
-# Map Selections
-###########################################
 
 
 transition_screen 
@@ -549,13 +527,28 @@ case $choice in
 
 esac
 
+}
 
 
 
+#######################################################################################################################################################
+# This is where the script runs in order from functions made and statements
+#######################################################################################################################################################
 
 
 
+intro_ascii_art
 
+get_player_name
+
+get_player_confirmation
+
+echo " Hello $player_name_input, Please pick a character class and hit enter. "
+
+
+character_selection
+
+map_selections
 
 
 
