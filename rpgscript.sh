@@ -76,6 +76,9 @@ function map_function ()
 {
 
 echo "Choose a map that you wish to explore. "
+echo
+echo
+echo
 
 echo "1 - $map1"
 echo "2 - $map2"
@@ -266,6 +269,7 @@ done
 
 clear
        
+echo " Hello $player_name_input, Please pick a character class and hit enter. "
 
 }
 
@@ -410,30 +414,66 @@ echo "4 - Thief"
 
 read class;
 
+clear
+
 
 case $class in
         
 
 
         1) echo " You have chosen the $char1. The $char1 is known for his strength in combat. "
-		
+	   echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+          
               
-                warrior_ascii_art
-		create_character_stats
+        warrior_ascii_art
+      create_character_stats
                 ;;
         2) echo " You have chosen the $char2. Magic is your primary weapon. Their high Attunement and Intelligence makes learning more sorcery and pyromancy very easy."
 		
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo 
+                 
+
 		create_character_stats
                 ;;
         3) echo " You have chosen the $char3. $char3's have the ability to heal and are fairly balanced with learning abilities."
-		
+	   echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo	
 		
                 
                 create_character_stats
                 ;;
         4) echo " You have chosen the $char4. $char4's aren't a resilient class due to light armor, very low Vitality and a weak shield, but have high mobility. The attack speed of the $char4's Knife makes it a solid one on one weapon."
 		
-                
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo 
 		create_character_stats
                 ;;
                 
@@ -449,6 +489,9 @@ echo
 echo
 echo
 
+
+
+
 }
 
 
@@ -461,10 +504,12 @@ function map_selections ()
 {
 
 
+
 echo " Press enter to embark on your journey...Evil awaits you. "
 
 
 read
+
 
 clear
 
@@ -479,12 +524,54 @@ map_ascii_art
 
 map_function
 
+clear
 
 case $explore in
-      1) echo " You have chosen to wander $map1. Be aware, Those who wander these woods become possessed by pure evil. ";;
-      2) echo " You have chosen to explore the $map2 .....The dead never sleep and are always hungry for flesh. ";;
-      3) echo " You have chosen to visit $map3. The heat will consume you...Stay away from the gold! ";;
-      4) echo " You have chosen to walk $map4 .... The magic is strong here,the sun is never present, Stay aware of your surroundings.";;
+      1) echo " You have chosen to wander $map1. Be aware, Those who wander these woods become possessed by pure evil. "
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+            
+            ;;
+      2) echo " You have chosen to explore the $map2 .....The dead never sleep and are always hungry for flesh. "
+
+
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+
+            ;;
+      3) echo " You have chosen to visit $map3. The heat will consume you...Stay away from the gold! "
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+
+
+            ;;
+      4) echo " You have chosen to walk $map4 .... The magic is strong here,the sun is never present, Stay aware of your surroundings."
+
+
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+           echo
+
+             ;;
       *) echo " Please chose your destination for travel.";;
 esac
 
@@ -542,8 +629,6 @@ intro_ascii_art
 get_player_name
 
 get_player_confirmation
-
-echo " Hello $player_name_input, Please pick a character class and hit enter. "
 
 
 character_selection
