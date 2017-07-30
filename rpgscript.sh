@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 ##########################################
 # Clears entire screen before game launches
 ##########################################
@@ -626,6 +624,7 @@ case $choice in
        battle_confirmation
         ;;
      3) echo " You have chose to leave this map.."
+	unset explore
         map_function
         ;;
      4) echo " Are you ready to face The Possessed Knight?...This enemy is powerful."
