@@ -71,9 +71,11 @@ map4=$(echo Witch Central)
 # Map Selection Function 
 ##################################
 function map_function ()
-
-
 {
+
+
+while [ -z "$explore" ]
+do
 
 echo "Choose a map that you wish to explore. "
 echo
@@ -87,6 +89,12 @@ echo "4 - $map4"
 
 read explore;
 
+clear
+
+done
+
+
+
 }
 
 ##################################
@@ -97,10 +105,10 @@ function revert_map_selection ()
 {
 
 echo " You have chose to leave this map... "
-read
-clear
+
 
 map_function
+
 
 }
 
@@ -575,6 +583,10 @@ case $explore in
       *) echo " Please chose your destination for travel.";;
 esac
 
+
+while [ -z "$choice" ]
+do
+
 echo " What will you do next? "
 
 echo "1 -Wander the woods"
@@ -586,9 +598,25 @@ read choice;
 
 clear
 
+done
+
+clear
+
 case $choice in
      1) echo " You have decided to wander the woods and encountered...."
+      
+        echo
+        echo
+        echo
+        echo
+
        random_creature_generator_lost_woods 
+       
+        echo
+        echo
+        echo
+        echo
+
        battle_damage_dice_roll
        ;;
      
@@ -597,8 +625,8 @@ case $choice in
        battle_damage_dice_roll
        battle_confirmation
         ;;
-     3) echo
-        revert_map_selection
+     3) echo " You have chose to leave this map.."
+        map_function
         ;;
      4) echo " Are you ready to face The Possessed Knight?...This enemy is powerful."
         echo
