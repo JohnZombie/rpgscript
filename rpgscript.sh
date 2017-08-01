@@ -65,55 +65,6 @@ map4=$(echo Witch Central)
 
 
 
-##################################
-# Map Selection Function 
-##################################
-function map_function ()
-{
-
-
-while [ -z "$explore" ]
-do
-
-echo "Choose a map that you wish to explore. "
-echo
-echo
-echo
-
-echo "1 - $map1"
-echo "2 - $map2"
-echo "3 - $map3"
-echo "4 - $map4"
-
-read explore;
-
-clear
-
-done
-
-
-
-}
-
-##################################
-# Revert to map selection function
-###################################
-function revert_map_selection ()
-
-{
-
-echo " You have chose to leave this map... "
-
-
-map_function
-
-
-}
-
-
-
-
-
 
 
 ############################################
@@ -316,19 +267,44 @@ clear
 
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. "
 read
+echo
+echo
+echo
+echo
+
 
 battle_damage_dice_roll=$((( RANDOM % 10 )  + 1 ))
 
-echo " You did $battle_damage_dice_roll damage to creature. "
-
+echo " You did $battle_damage_dice_roll damage to this creature. "
+echo
+echo
+echo
+echo
 
 if [[ $battle_damage_dice_roll -gt 5 ]]
 then
 echo " You have defeated this creature. "
+echo
+echo
+echo
+
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then 
-echo " You have been defeated by this creature..Try again "
+echo '                   
+                                                  _            _
+			  _   _  ___  _   _    __| |_  ___  __| | 
+			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
+			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+			   __/ |                                  
+			  |___/                                   '
+echo
+echo
+echo
+echo
+
+
 
 fi
 
@@ -502,6 +478,44 @@ echo
 
 
 
+
+
+##################################
+# Map Selection Function Loop
+##################################
+function map_function ()
+{
+
+
+while [ -z "$explore" ]
+do
+
+echo "Choose a map that you wish to explore. "
+echo
+echo
+echo
+echo "1 - $map1"
+echo "2 - $map2"
+echo "3 - $map3"
+echo "4 - $map4"
+
+read explore;
+
+clear
+
+done
+
+
+
+}
+
+
+
+
+
+
+
+
 ############################################
 # Map Selections
 ###########################################
@@ -625,7 +639,7 @@ case $choice in
         ;;
      3) echo " You have chose to leave this map.."
 	unset explore
-        map_function
+               
         ;;
      4) echo " Are you ready to face The Possessed Knight?...This enemy is powerful."
         echo
