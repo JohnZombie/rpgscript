@@ -52,9 +52,9 @@ declare -i stat4_num_final
 # Map Variables
 ####################
 map1=$(echo The Possessed Woods)
-map2=$(echo City of The Dead)
+map2=$(echo The Damned Paths)
 map3=$(echo Dragon Alley)
-map4=$(echo Witch Central)
+map4=$(echo Witch Valley)
 
 
 
@@ -67,16 +67,26 @@ map4=$(echo Witch Central)
 
 
 
-############################################
+###############################################
 # Creature  Encounters for The Possesed Woods
-###########################################
+###############################################
 
-creature[0]="Lost Ghoul"
-creature[1]="Demented Ghost"
-creature[2]="Ghost Knight"
+ghoul[0]="Lost Ghoul"
+ghoul[1]="Demented Ghost"
+ghoul[2]="Ghost Knight"
+ghoul[3]="Lost Knight"
+
 
 Boss1="Possessed Knight"
 
+
+########################################################
+# Creature Encounters for The Damned Paths
+#######################################################
+damned[0]="Damned Traveler"
+damned[1]="Damned Soldier"
+damned[2]="Damned Dog"
+damned[3]="Damned Hunter"
 
 ###################################
 # ASCII Art Functions 
@@ -311,18 +321,29 @@ fi
 }
 
 
-##########################################
-# Random Creature Generator Function 
-###########################################
-function random_creature_generator_lost_woods ()
+########################################################
+# Random Creature Generator Function The Possessed Woods
+########################################################
+function random_creature_generator_possessed_woods ()
 {
 
-random_creature_generator_lost_woods=$(( RANDOM % 3 ))
+random_creature_generator_lost_woods=$(( RANDOM % 4 ))
 
-echo  ${creature[$random_creature_generator_lost_woods]} 
+echo  ${ghoul[$random_creature_generator_lost_woods]} 
 
 }
 
+########################################################
+# Random Creature Generator Function The Damned Paths
+########################################################
+function random_creature_generator_damned_paths ()
+{
+
+random_creature_generator_lost_woods=$(( RANDOM % 4 ))
+
+echo  ${damned[$random_creature_generator_damned_paths]} 
+
+}
 
 
 
@@ -483,7 +504,7 @@ echo
 ##################################
 # Map Selection Function Loop
 ##################################
-function map_function ()
+function map_selection_loop ()
 {
 
 
@@ -519,7 +540,7 @@ done
 ############################################
 # Map Selections
 ###########################################
-function map_selections ()
+function map_selection_menu ()
 
 {
 
@@ -542,7 +563,7 @@ read
 
 map_ascii_art 
 
-map_function
+map_selection_loop
 
 clear
 
@@ -555,9 +576,9 @@ case $explore in
            echo
            echo
            echo
-            
+        Possessed_woods
             ;;
-      2) echo " You have chosen to explore the $map2 .....The dead never sleep and are always hungry for flesh. "
+      2) echo " You have chosen to explore the $map2 .....The Damned never sleep and are hungry for flesh. "
 
 
            echo
@@ -567,7 +588,7 @@ case $explore in
            echo
            echo
            echo
-
+       The_Damned_Paths
             ;;
       3) echo " You have chosen to visit $map3. The heat will consume you...Stay away from the gold! "
            echo
@@ -596,10 +617,23 @@ case $explore in
 esac
 
 
+
+}
+
+
+###########################################
+#Possessed Woods Selections
+###########################################
+
+function Possessed_woods ()
+
+{
+
+
 while [ -z "$choice" ]
 do
 
-echo " What will you do next? "
+echo " You have entered $map1, What will you do next? "
 
 echo "1 -Wander the woods"
 echo "2 -Battle creatures"
@@ -615,7 +649,7 @@ done
 clear
 
 case $choice in
-     1) echo " You have decided to wander the woods and encountered...."
+     1) echo " You have decided to wander the woods and encountered a..."
       
         echo
         echo
@@ -657,6 +691,86 @@ esac
 
 }
 
+#########################################################################
+# City of The Damned
+#########################################################################
+function The_Damned_Paths ()
+
+{
+
+while [ -z "$choice" ]
+do
+
+echo " What will you do next? "
+
+echo "1 -Walk The Damned Paths"
+echo "2 -Battle The Damned"
+echo "3 -Leave The Damned Paths"
+echo "4 -Find The King of The Damned"
+
+read choice;
+
+clear
+
+done
+
+clear
+
+case $choice in
+     1) echo " You have decided to walk The Damned Paths and encountered...."
+      
+        echo
+        echo
+        echo
+        echo
+
+       random_creature_generator_lost_woods 
+       
+        echo
+        echo
+        echo
+        echo
+
+       battle_damage_dice_roll
+       ;;
+     
+     2) echo " You chose to battle The damned and will fight a... "
+       random_creature_generator_Lost_Woods
+       battle_damage_dice_roll
+       battle_confirmation
+        ;;
+     3) echo " You have chose to leave this map.."
+	unset explore
+               
+        ;;
+     4) echo " Are you ready to face The King of The Damned?...This enemy is harvests large amounts of evil energy."
+        echo
+        echo
+        echo
+        echo
+        echo
+        echo
+        echo
+        battle_damage_dice_roll
+       ;;
+     *) echo " Please make a selection from the list....";;
+
+esac
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #######################################################################################################################################################
@@ -674,7 +788,7 @@ get_player_confirmation
 
 character_selection
 
-map_selections
+map_selection_menu
 
 
 
