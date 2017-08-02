@@ -71,13 +71,13 @@ map4=$(echo Witch Valley)
 # Creature  Encounters for The Possesed Woods
 ###############################################
 
-ghoul[0]="Lost Ghoul"
+ghoul[0]="Possessed Ghoul"
 ghoul[1]="Demented Ghost"
 ghoul[2]="Ghost Knight"
-ghoul[3]="Lost Knight"
+ghoul[3]="Possessed Swordsman"
 
 
-Boss1="Possessed Knight"
+boss1="The Possessed Knight"
 
 
 ########################################################
@@ -87,6 +87,23 @@ damned[0]="Damned Traveler"
 damned[1]="Damned Soldier"
 damned[2]="Damned Dog"
 damned[3]="Damned Hunter"
+
+boss2="King of The Damned"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ###################################
 # ASCII Art Functions 
@@ -106,22 +123,12 @@ echo " |  /   V        ))       V   \  | "
 echo " |/            //               \| "
 echo "               \V                  "
 }
-
-function warrior_ascii_art ()
-{
-
-echo -n $'\E[31m'
+ 
 
 
 
 
 
-
-
-
-
-
-}
 
 function map_ascii_art ()
 {
@@ -147,7 +154,7 @@ _______________''.--o/___  \_______________(_)___________
 
 }
 
-function Possessed_Knight ()
+function possessed_knight ()
 
 {
 
@@ -184,6 +191,8 @@ echo $'          ()`'
 ###################################
 # Transition Function
 ###################################
+
+
 function transition_screen ()
 {
 clear
@@ -329,7 +338,7 @@ function random_creature_generator_possessed_woods ()
 
 random_creature_generator_lost_woods=$(( RANDOM % 4 ))
 
-echo  ${ghoul[$random_creature_generator_lost_woods]} 
+echo  ${ghoul[$random_creature_generator_possessed_woods]} 
 
 }
 
@@ -339,7 +348,7 @@ echo  ${ghoul[$random_creature_generator_lost_woods]}
 function random_creature_generator_damned_paths ()
 {
 
-random_creature_generator_lost_woods=$(( RANDOM % 4 ))
+random_creature_generator_damned_paths=$(( RANDOM % 4 ))
 
 echo  ${damned[$random_creature_generator_damned_paths]} 
 
@@ -436,10 +445,9 @@ case $class in
            echo
            echo
           
-              
-        warrior_ascii_art
       create_character_stats
-                ;;
+             ;;
+       
         2) echo " You have chosen the $char2. Magic is your primary weapon. Their high Attunement and Intelligence makes learning more sorcery and pyromancy very easy."
 		
            echo
@@ -451,8 +459,7 @@ case $class in
            echo
            echo 
                  
-
-		create_character_stats
+      create_character_stats
                 ;;
         3) echo " You have chosen the $char3. $char3's have the ability to heal and are fairly balanced with learning abilities."
 	   echo
@@ -464,8 +471,7 @@ case $class in
            echo
            echo	
 		
-                
-                create_character_stats
+      create_character_stats
                 ;;
         4) echo " You have chosen the $char4. $char4's aren't a resilient class due to light armor, very low Vitality and a weak shield, but have high mobility. The attack speed of the $char4's Knife makes it a solid one on one weapon."
 		
@@ -477,7 +483,8 @@ case $class in
            echo
            echo
            echo 
-		create_character_stats
+		
+     create_character_stats
                 ;;
                 
         *) echo " Please pick a class from the list. "
@@ -576,7 +583,7 @@ case $explore in
            echo
            echo
            echo
-        Possessed_woods
+        possessed_woods
             ;;
       2) echo " You have chosen to explore the $map2 .....The Damned never sleep and are hungry for flesh. "
 
@@ -588,7 +595,7 @@ case $explore in
            echo
            echo
            echo
-       The_Damned_Paths
+       the_damned_paths
             ;;
       3) echo " You have chosen to visit $map3. The heat will consume you...Stay away from the gold! "
            echo
@@ -625,7 +632,7 @@ esac
 #Possessed Woods Selections
 ###########################################
 
-function Possessed_woods ()
+function possessed_woods ()
 
 {
 
@@ -656,7 +663,7 @@ case $choice in
         echo
         echo
 
-       random_creature_generator_lost_woods 
+       random_creature_generator_possessed_woods 
        
         echo
         echo
@@ -667,15 +674,17 @@ case $choice in
        ;;
      
      2) echo " You chose to battle creatures and will fight a... "
-       random_creature_generator_Lost_Woods
+       random_creature_generator_possessed_woods
        battle_damage_dice_roll
        battle_confirmation
         ;;
+    
+
      3) echo " You have chose to leave this map.."
 	unset explore
                
         ;;
-     4) echo " Are you ready to face The Possessed Knight?...This enemy is powerful."
+     4) echo " Are you ready to face $boss1 ?...This enemy is powerful."
         echo
         echo
         echo
@@ -683,9 +692,17 @@ case $choice in
         echo
         echo
         echo
-        battle_damage_dice_roll
-       ;;
-     *) echo " Please make a selection from the list....";;
+
+       possessed_knight
+       battle_damage_dice_roll
+      
+
+        ;;
+     
+     
+      *)  echo " Please make a selection from the list...."
+
+        ;;
 
 esac
 
@@ -694,7 +711,7 @@ esac
 #########################################################################
 # City of The Damned
 #########################################################################
-function The_Damned_Paths ()
+function the_damned_paths ()
 
 {
 
@@ -724,18 +741,18 @@ case $choice in
         echo
         echo
 
-       random_creature_generator_lost_woods 
+       random_creature_generator_damned_paths 
        
         echo
         echo
         echo
         echo
-
-       battle_damage_dice_roll
-       ;;
+       
+        battle_damage_dice_roll
+        ;;
      
      2) echo " You chose to battle The damned and will fight a... "
-       random_creature_generator_Lost_Woods
+       random_creature_generator_damned_paths
        battle_damage_dice_roll
        battle_confirmation
         ;;
@@ -751,9 +768,14 @@ case $choice in
         echo
         echo
         echo
-        battle_damage_dice_roll
-       ;;
-     *) echo " Please make a selection from the list....";;
+        
+     battle_damage_dice_roll
+      
+          
+         ;;
+    
+
+      *) echo " Please make a selection from the list....";;
 
 esac
 
