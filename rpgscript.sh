@@ -24,10 +24,6 @@ stat3=$(echo HP)
 stat4=$(echo Speed)
 stat4=$(echo Defense)
 
-
-
-
-
 ##################################
 # Declare varible types as integers
 ###################################
@@ -46,8 +42,6 @@ declare -i stat2_num_final
 declare -i stat3_num_final
 declare -i stat4_num_final
 
-
-
 ####################
 # Map Variables
 ####################
@@ -56,19 +50,14 @@ map2=$(echo The Damned Paths)
 map3=$(echo Dragon Alley)
 map4=$(echo Witch Valley)
 
-
-
-
 #######################################################################################################################################################
 # ALL FUNCTIONS :P
 ########################################################################################################################################################
 
 
 
-
-
 ###############################################
-# Creature  Encounters for The Possesed Woods
+# Creature  Encounters for The Possessed Woods
 ###############################################
 
 ghoul[0]="Possessed Ghoul"
@@ -79,7 +68,6 @@ ghoul[3]="Possessed Swordsman"
 
 boss1="The Possessed Knight"
 
-
 ########################################################
 # Creature Encounters for The Damned Paths
 #######################################################
@@ -89,20 +77,6 @@ damned[2]="Damned Dog"
 damned[3]="Damned Hunter"
 
 boss2="King of The Damned"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ###################################
@@ -123,12 +97,6 @@ echo " |  /   V        ))       V   \  | "
 echo " |/            //               \| "
 echo "               \V                  "
 }
- 
-
-
-
-
-
 
 function map_ascii_art ()
 {
@@ -155,7 +123,6 @@ _______________''.--o/___  \_______________(_)___________
 }
 
 function possessed_knight ()
-
 {
 
 echo -n $'\E[31m'
@@ -180,19 +147,11 @@ echo $'  (  /   `-._//^`'
 echo $'   `Y-.____(__}'
 echo $'    |     {__)'
 echo $'          ()`'
-
-
-
 }
-
-
-
 
 ###################################
 # Transition Function
 ###################################
-
-
 function transition_screen ()
 {
 clear
@@ -201,7 +160,6 @@ echo "
 Name: $player_name_input ****  $stat1: $stat1_num_final **** $stat2: $stat2_num_final **** $stat3: $stat3_num_final ****  $stat4: $stat4_num_final
 [O\\\\\[========================-[O\\\\\[========================-[O\\\\\[========================-[O\\\\\[========================-##############
 "
-
 }
 
 
@@ -228,10 +186,6 @@ clear
 ###############################
 function get_player_confirmation ()
 {
-	
-
-
-	
 while [[ $response != "y" ]]; do
         read -r -p "Are you sure? [y/n] " response
         if [[ "$response" =~ ^(y)$ ]]; then
@@ -246,7 +200,6 @@ done
 clear
        
 echo " Hello $player_name_input, Please pick a character class and hit enter. "
-
 }
 
 ##########################################
@@ -254,7 +207,6 @@ echo " Hello $player_name_input, Please pick a character class and hit enter. "
 ##########################################
 function battle_confirmation ()
 {
-
 while [[ $confirmation != "y" ]]; do
         read -r -p " Do you wish to battle this creature? [y/n] " confirmation
         if [[ "$confirmation" =~ ^(y)$ ]]; then
@@ -268,17 +220,13 @@ while [[ $confirmation != "y" ]]; do
 done
 
 clear
-
-
 }
-
 
 ########################################
 # Function for Battle Damage Number Roll
 ########################################
 function battle_damage_dice_roll ()
 {
-
 
 battle_confirmation
 
@@ -550,17 +498,11 @@ done
 function map_selection_menu ()
 
 {
-
-
-
 echo " Press enter to embark on your journey...Evil awaits you. "
-
 
 read
 
-
 clear
-
 
 transition_screen 
 
@@ -631,12 +573,8 @@ esac
 ###########################################
 #Possessed Woods Selections
 ###########################################
-
 function possessed_woods ()
-
 {
-
-
 while [ -z "$choice" ]
 do
 
@@ -712,9 +650,7 @@ esac
 # City of The Damned
 #########################################################################
 function the_damned_paths ()
-
 {
-
 while [ -z "$choice" ]
 do
 
@@ -741,7 +677,8 @@ case $choice in
         echo
         echo
 
-       random_creature_generator_damned_paths 
+       random_creature_generator_damned_paths
+       transition_screen
        
         echo
         echo
@@ -758,7 +695,6 @@ case $choice in
         ;;
      3) echo " You have chose to leave this map.."
 	unset explore
-               
         ;;
      4) echo " Are you ready to face The King of The Damned?...This enemy is harvests large amounts of evil energy."
         echo
@@ -768,49 +704,24 @@ case $choice in
         echo
         echo
         echo
-        
-     battle_damage_dice_roll
-      
-          
-         ;;
+        transition_screen  	
+        battle_damage_dice_roll
+        ;;
     
 
       *) echo " Please make a selection from the list....";;
 
 esac
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #######################################################################################################################################################
 # This is where the script runs in order from functions made and statements
 #######################################################################################################################################################
-
-
-
 intro_ascii_art
 
 get_player_name
 
 get_player_confirmation
 
-
 character_selection
 
 map_selection_menu
-
-
-
