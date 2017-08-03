@@ -9,20 +9,21 @@ clear
 ###########################
 # Character Class Variables
 ###########################
-char1=$(echo Warrior)
-char2=$(echo Sorcerer)
-char3=$(echo Cleric)
-char4=$(echo Thief)
+char1="Warrior"
+char2="Sorcerer"
+char3="Cleric"
+char4="Thief"
 
 
 ##########################
 # Character Stat Variables
-########################## 
-stat1=$(echo Strength)
-stat2=$(echo Intelligance)
-stat3=$(echo HP)
-stat4=$(echo Speed)
-stat4=$(echo Defense)
+##########################
+stat1="Strength"
+stat2="Intelligance"
+stat3="HP"
+stat4="Speed"
+# stat5 is not being used in the script
+# stat5="Defense"
 
 ##################################
 # Declare varible types as integers
@@ -45,26 +46,21 @@ declare -i stat4_num_final
 ####################
 # Map Variables
 ####################
-map1=$(echo The Possessed Woods)
-map2=$(echo The Damned Paths)
-map3=$(echo Dragon Alley)
-map4=$(echo Witch Valley)
+map1="The Possessed Woods"
+map2="The Damned Paths"
+map3="Dragon Alley"
+map4="Witch Valley"
 
 #######################################################################################################################################################
 # ALL FUNCTIONS :P
 ########################################################################################################################################################
-
-
-
 ###############################################
 # Creature  Encounters for The Possessed Woods
 ###############################################
-
 ghoul[0]="Possessed Ghoul"
 ghoul[1]="Demented Ghost"
 ghoul[2]="Ghost Knight"
 ghoul[3]="Possessed Swordsman"
-
 
 boss1="The Possessed Knight"
 
@@ -76,8 +72,8 @@ damned[1]="Damned Soldier"
 damned[2]="Damned Dog"
 damned[3]="Damned Hunter"
 
-boss2="King of The Damned"
-
+# boss2 is unused 
+# boss2="King of The Damned"
 
 ###################################
 # ASCII Art Functions 
@@ -100,7 +96,6 @@ echo "               \V                  "
 
 function map_ascii_art ()
 {
-
 echo "        '(___(_____)      __           '.   \  :  /   .'
                      /. _\            '.  \ : /  .'
                 .--.|/_/__      -----____   _  _____-----
@@ -119,12 +114,10 @@ _______________''.--o/___  \_______________(_)___________
         ~         ~            ~   ~                 ~
    ~                  ~    ~ ~                 ~        "
 
-
 }
 
 function possessed_knight ()
 {
-
 echo -n $'\E[31m'
 echo $''
 echo $'      _,.'
@@ -162,24 +155,19 @@ Name: $player_name_input ****  $stat1: $stat1_num_final **** $stat2: $stat2_num_
 "
 }
 
-
 ###################################
 # Function for Name Input
 ####################################
 function get_player_name ()
 {
 echo " Please enter your name and hit enter..."
-get_player_name_input=
+# get_player_name_input is unused
+# get_player_name_input=
 while [[ $player_name_input = "" ]]; do
-   read player_name_input
+   read -r player_name_input
 done
-
-
 clear
-
-
 }
-
 
 ################################
 # Function for Player Confirmation
@@ -191,7 +179,7 @@ while [[ $response != "y" ]]; do
         if [[ "$response" =~ ^(y)$ ]]; then
                 clear
         elif [[ "$response" =~ ^(n)$ ]]; then
-                player_name_input=$(echo "")
+                player_name_input=""
                 clear
                 get_player_name
         fi
@@ -233,7 +221,7 @@ battle_confirmation
 clear
 
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. "
-read
+read -r
 echo
 echo
 echo
@@ -274,20 +262,16 @@ echo
 
 
 fi
-
 }
-
 
 ########################################################
 # Random Creature Generator Function The Possessed Woods
 ########################################################
 function random_creature_generator_possessed_woods ()
 {
-
-random_creature_generator_lost_woods=$(( RANDOM % 4 ))
-
-echo  ${ghoul[$random_creature_generator_possessed_woods]} 
-
+# random_creature_generator_lost_woods is unused
+# random_creature_generator_lost_woods=$(( RANDOM % 4 ))
+echo  "${ghoul[$random_creature_generator_possessed_woods]}"
 }
 
 ########################################################
@@ -295,17 +279,9 @@ echo  ${ghoul[$random_creature_generator_possessed_woods]}
 ########################################################
 function random_creature_generator_damned_paths ()
 {
-
 random_creature_generator_damned_paths=$(( RANDOM % 4 ))
-
-echo  ${damned[$random_creature_generator_damned_paths]} 
-
+echo  "${damned[$random_creature_generator_damned_paths]}"
 }
-
-
-
-
-
 
 ####################################
 # Function for character stats
@@ -339,47 +315,38 @@ function create_character_stats ()
 {
 	set_base_stats
 	echo $stat1
-		stat1_num_rand=$(echo $(( 1 + RANDOM % 7)))
+		stat1_num_rand=$(( 1 + RANDOM % 7))
 		stat1_num_final=$(( stat1_num_rand + stat1_num_base ))
 		echo Your character stat is: $stat1_num_final
 	echo $stat2
-		stat2_num_rand=$(echo $(( 1  + RANDOM % 7)))
+		stat2_num_rand=$(( 1  + RANDOM % 7))
 		stat2_num_final=$((stat2_num_rand + stat2_num_base))
 		echo Your character stat is: $stat2_num_final
 	echo $stat3
-		stat3_num_rand=$(echo $(( 1 + RANDOM % 7)))
+		stat3_num_rand=$(( 1 + RANDOM % 7))
 		stat3_num_final=$((stat3_num_rand + stat3_num_base))
 		echo Your character stat is: $stat3_num_final
 	echo $stat4
-		stat4_num_rand=$(echo $(( 1 + RANDOM % 7)))
+		stat4_num_rand=$(( 1 + RANDOM % 7))
 		stat4_num_final=$((stat4_num_rand + stat4_num_base))
 		echo Your character stat is: $stat4_num_final
 }
 
-
-
-
 ##############################
 #Character Selection Function
 ##############################
-
-
 function character_selection ()
-
 {
 echo "1 - Warrior"
 echo "2 - Sorcerer"
 echo "3 - Cleric"
 echo "4 - Thief"
 
-read class;
+read -r class;
 
 clear
 
-
 case $class in
-        
-
 
         1) echo " You have chosen the $char1. The $char1 is known for his strength in combat. "
 	   echo
@@ -447,21 +414,13 @@ echo
 echo
 echo
 
-
-
-
 }
-
-
-
-
 
 ##################################
 # Map Selection Function Loop
 ##################################
 function map_selection_loop ()
 {
-
 
 while [ -z "$explore" ]
 do
@@ -475,32 +434,21 @@ echo "2 - $map2"
 echo "3 - $map3"
 echo "4 - $map4"
 
-read explore;
+read -r explore;
 
 clear
 
 done
-
-
-
 }
-
-
-
-
-
-
-
 
 ############################################
 # Map Selections
 ###########################################
 function map_selection_menu ()
-
 {
 echo " Press enter to embark on your journey...Evil awaits you. "
 
-read
+read -r
 
 clear
 
@@ -508,7 +456,7 @@ transition_screen
 
 echo " You have arrived ashore to the Lost Island.. "
 
-read
+read -r
 
 map_ascii_art 
 
@@ -564,11 +512,7 @@ case $explore in
              ;;
       *) echo " Please chose your destination for travel.";;
 esac
-
-
-
 }
-
 
 ###########################################
 #Possessed Woods Selections
@@ -585,7 +529,7 @@ echo "2 -Battle creatures"
 echo "3 -Leave The Possessed Woods"
 echo "4 -Find The Possessed Knight"
 
-read choice;
+read -r choice;
 
 clear
 
@@ -643,7 +587,6 @@ case $choice in
         ;;
 
 esac
-
 }
 
 #########################################################################
@@ -661,7 +604,7 @@ echo "2 -Battle The Damned"
 echo "3 -Leave The Damned Paths"
 echo "4 -Find The King of The Damned"
 
-read choice;
+read -r choice;
 
 clear
 
@@ -710,7 +653,6 @@ case $choice in
     
 
       *) echo " Please make a selection from the list....";;
-
 esac
 }
 #######################################################################################################################################################
