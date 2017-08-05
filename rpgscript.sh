@@ -73,7 +73,7 @@ declare -i stat4_num_final
 ####################
 map1="The Possessed Woods"
 map2="The Damned Paths"
-map3="Dragon's Den"
+map3="Golden Den"
 map4="Witch Valley"
 
 
@@ -104,6 +104,18 @@ damned[2]="Damned Beast"
 damned[3]="Damned Hunter"
 
 boss2="King of The Damned"
+
+
+###############################################
+# Creature Encounters for Dragons Den
+##############################################
+dragon[0]="Ice Dragon"
+dragon[1]="Flame Dragon"
+dragon[2]="Water Dragon"
+dragon[3]="Zombie Dragon"
+
+boss3="The Golden Dragon"
+
 
 ###################################
 # ASCII Art Functions 
@@ -307,6 +319,17 @@ random_creature_generator_damned_paths=$(( RANDOM % 4 ))
 echo  "${damned[$random_creature_generator_damned_paths]}"
 }
 
+########################################################
+# Random Creature Generator Function Dragons Den
+#######################################################
+function random_creature_generator_golden_den ()
+
+{
+random_creature_generator_golden_den=$(( RANDOM % 4 ))
+echo "${dragon[$random_creature_generator_golden_den]}"
+}
+
+
 ####################################
 # Function for character stats
 ####################################
@@ -505,7 +528,7 @@ case $explore in
       3) echo " You have chosen to visit $map3. The heat will consume you...Stay away from the gold! "
             
 	 echo_spacer_7  
-	      
+	 golden_den     
 	  ;;
       
       4) echo " You have chosen to walk $map4 .... The magic is strong here,the sun is never present, Stay aware of your surroundings."
@@ -672,16 +695,16 @@ esac
 #Dragons Den Selections
 ######################################################
 
-function dragons_den ()
+function golden_den ()
 {
 	while [ -z "$choice" ]
 	do
 
-		echo " What will you do in Dragons Den? "
+		echo " What will you do in The Golden Den? "
 
-		echo "1 -Search the Dragons den for Gold"
+		echo "1 -Search $map3 for gold"
 		echo "2 -Battle Dragons"
-		echo "3 -Leave This Map."
+		echo "3 -Leave this map"
 		echo "4 -Find The Golden Dragon"
 
 		read -r choice;
@@ -692,6 +715,48 @@ done
 
 clear
 
+case $choice in
+     1) echo " You are searching for Gold and awake an Ice Dragon from its slumber.... He then shoots a blast of ice at you and misses. What will you do next?"
+      
+       echo_spacer_7
+       random_creature_generator_golden_den
+       transition_screen
+       echo_spacer_7
+       battle_damage_dice_roll
+       
+
+        ;;
+     
+     2) echo " You ignore all of the precious gold and decide to awake dragons for battle. "
+       
+       echo_spacer_7
+       random_creature_generator_golden_den
+       echo_spacer_7  
+       battle_damage_dice_roll
+       
+       
+        ;;
+    
+     3) echo " You have chose to leave this map.."
+	
+	unset explore
+        
+	;;
+     
+     
+     4)
+        echo " $boss3 is the ruler of all gold on The Lost Island...You come across his nest of gold as you are wandering the den. He makes an appearance in gold so bright that the sun has no chance. You are blinded by his golden presence and lose site of him. $boss3 is not very happy to see you in his dens."       
+       	
+        echo_spacer_7
+	
+        battle_damage_dice_roll
+       
+       	;;
+    
+
+      *) echo " Please make a selection from the list....";;
+esac
+}
 
 
 
