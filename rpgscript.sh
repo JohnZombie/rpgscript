@@ -88,10 +88,10 @@ map4="Witch Valley"
 ###############################################
 # Creature  Encounters for The Possessed Woods
 ###############################################
-ghoul[0]="Possessed Ghoul"
-ghoul[1]="Demented Ghost"
-ghoul[2]="Ghost Knight"
-ghoul[3]="Possessed Swordsman"
+ghost[0]="Tormented Soul"
+ghost[1]="Demented Ghost"
+ghost[2]="Ghostly Knight"
+ghost[3]="Possessed Swordsman"
 
 boss1="The Possessed Knight"
 
@@ -117,6 +117,28 @@ dragon[3]="Zombie Dragon"
 boss3="The Golden Dragon"
 
 
+
+###################################################
+# Creature Encounters for Witch Valley
+####################################################
+
+witch[0]="Warlock"
+witch[1]="Witch Doctor"
+witch[2]="Black Mage"
+witch[3]="Witches Apprentice"
+
+
+boss4="Wicked Witch of The Valley"
+
+
+
+
+
+
+
+
+
+
 ###################################
 # ASCII Art Functions 
 ###################################
@@ -138,7 +160,7 @@ echo "               \V                  "
 
 function map_ascii_art ()
 {
-echo "        '(___(_____)      __           '.   \  :  /   .'
+echo "                 __           '.   \  :  /   .'
                      /. _\            '.  \ : /  .'
                 .--.|/_/__      -----____   _  _____-----
 _______________''.--o/___  \_______________(_)___________
@@ -150,7 +172,7 @@ _______________''.--o/___  \_______________(_)___________
    ~    ~      .'':.|_|A:. ..::''.
              /:.  .:|_|.\ .:.  :.:\   ~
   ~         :..:. .:. .::..:  .:  ..:.       ~   ~    ~
-             \.: .:  :. .: ..:: .lcf/
+             \.: .:  :. .: ..:: . /
     ~      ~      ~    ~    ~         ~
                ~           ~    ~   ~             ~
         ~         ~            ~   ~                 ~
@@ -254,10 +276,10 @@ done
 
 }
 
-########################################
-# Function for Battle Damage Number Roll
-########################################
-function battle_damage_dice_roll ()
+####################################################################################
+# Function for Battle Damage Number Roll Max 10 Damage
+#####################################################################################
+function battle_damage_dice_10_roll ()
 {
 
 battle_confirmation
@@ -307,7 +329,7 @@ function random_creature_generator_possessed_woods ()
 {
 
 random_creature_generator_possessed_woods=$(( RANDOM % 4 ))
-echo  "${ghoul[$random_creature_generator_possessed_woods]}"
+echo  "${ghost[$random_creature_generator_possessed_woods]}"
 }
 
 ########################################################
@@ -328,6 +350,35 @@ function random_creature_generator_golden_den ()
 random_creature_generator_golden_den=$(( RANDOM % 4 ))
 echo "${dragon[$random_creature_generator_golden_den]}"
 }
+
+######################################################################
+# What will you do next case selections
+######################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ####################################
@@ -495,7 +546,7 @@ clear
 
 transition_screen 
 
-echo " You have arrived ashore to the Lost Island.. "
+echo " You have arrived ashore to The Lost land in search of glory and riches. Many have said this land is a myth, others have searched for many years and never came back from their expeditions...You are here to bring this myth to reality. "
 
 read -r
 
@@ -525,16 +576,17 @@ case $explore in
           ;;
       
   
-      3) echo " You have chosen to visit $map3. The heat will consume you...Stay away from the gold! "
+      3) echo " You have chosen to visit $map3. The heat in these dens keep strangers out.. The gold is said to be precious and breathe taking, many have died in attempt toleave the den with these riches."
             
 	 echo_spacer_7  
 	 golden_den     
 	  ;;
       
       4) echo " You have chosen to walk $map4 .... The magic is strong here,the sun is never present, Stay aware of your surroundings."
-
+          
+         
          echo_spacer_7
-
+         witch_valley
            ;;
      
       *) echo " Please chose your destination for travel.";;
@@ -573,7 +625,7 @@ case $choice in
        
        echo_spacer_4
         
-       battle_damage_dice_roll
+       battle_damage_dice_10_roll
        
       
        
@@ -589,7 +641,7 @@ case $choice in
 
        echo_spacer_4
 
-       battle_damage_dice_roll
+       battle_damage_dice_10_roll
        
      
        
@@ -610,7 +662,7 @@ case $choice in
       
        echo_spacer_4
        
-       battle_damage_dice_roll
+       battle_damage_dice_10_roll
       
       
 
@@ -655,7 +707,7 @@ case $choice in
        random_creature_generator_damned_paths
        transition_screen
        echo_spacer_7
-       battle_damage_dice_roll
+       
        
 
         ;;
@@ -665,7 +717,7 @@ case $choice in
        echo_spacer_7
        random_creature_generator_damned_paths
        echo_spacer_7  
-       battle_damage_dice_roll
+      
        
        
         ;;
@@ -682,7 +734,7 @@ case $choice in
        
        	echo_spacer_7
 	
-        battle_damage_dice_roll
+        
        
        	;;
     
@@ -716,23 +768,22 @@ done
 clear
 
 case $choice in
-     1) echo " You are searching for Gold and awake an Ice Dragon from its slumber.... He then shoots a blast of ice at you and misses. What will you do next?"
+     1) echo " You are searching for Gold and have awoken Dragon from its slumber.... He then lunges towards you with all of his might. What will you do next? "
       
        echo_spacer_7
        random_creature_generator_golden_den
-       transition_screen
        echo_spacer_7
-       battle_damage_dice_roll
+       
        
 
         ;;
      
-     2) echo " You ignore all of the precious gold and decide to awake dragons for battle. "
+     2) echo " You ignore all of the precious gold and decide to wake up dragons for battle. "
        
        echo_spacer_7
        random_creature_generator_golden_den
        echo_spacer_7  
-       battle_damage_dice_roll
+      
        
        
         ;;
@@ -749,7 +800,7 @@ case $choice in
        	
         echo_spacer_7
 	
-        battle_damage_dice_roll
+        
        
        	;;
     
@@ -761,8 +812,72 @@ esac
 
 
 
+##########################################################
+# Witch Valley Selections
+#########################################################
 
 
+function witch_valley ()
+{
+	while [ -z "$choice" ]
+	do
+
+		echo " What will you do in $map4 first? "
+
+		echo "1 -Walk the $map4 in search of potions and remedies."
+		echo "2 -Train your skills with battling creatures in the valley."
+		echo "3 -Leave this map"
+		echo "4 -Visit the $boss4"
+
+		read -r choice;
+
+	clear
+
+done
+
+clear
+
+case $choice in
+     1) echo " You are strolling through the $map4 for potions and remedies to heal your wounds from your on-going battles. The valley is pitch black with little light in sight. A pair of red glowing eyes make an appearance and the air becomes cold. You cannot get a visual of this creature. What will you do next? "
+      
+       echo_spacer_7
+       random_creature_generator_golden_den
+       echo_spacer_7
+       
+       
+
+        ;;
+     
+     2) echo " You scream a battle cry in the valley calling out onto all creatures for a challenge. It is silent and all you hear are echoes of your voice. Red lights begin to flicker in all directions...but these are not lights, these are the eyes of blood thirsty enemies. You are now surrounded, what do you do? "
+       
+       echo_spacer_7
+       random_creature_generator_golden_den
+       echo_spacer_7  
+      
+       
+       
+        ;;
+    
+     3) echo " You have chose to leave this map.."
+	
+	unset explore
+        
+	;;
+     
+     
+     4)
+        echo " You see lights up ahead as you are wandering the dark valley. Goblets of fire light your path to the entrance. The door is slightly open with the smell of death lingering through its cracks. What do you do next?"       
+       	
+        echo_spacer_7
+	
+        
+       
+       	;;
+    
+
+      *) echo " Please make a selection from the list....";;
+esac
+}
 
 
 
