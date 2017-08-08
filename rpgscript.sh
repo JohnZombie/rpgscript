@@ -1,45 +1,17 @@
 #!/bin/bash
 
 
-##################################################
-# echo spacers fucntion 7 spaces
-##################################################
-function echo_spacer_7 ()
-
-{
-
-echo
-echo
-echo
-echo
-echo
-echo
-echo
-
-}
-
-#########################
-#echo spacer 4 spaces 
-#########################
-function echo_spacer_4 ()
-
-{
-
-echo
-echo
-echo
-echo
-
-}
-
+######################################################################################
+# Game Variables
+######################################################################################
 
 ###########################
 # Character Class Variables
 ###########################
-char1="Warrior"
-char2="Assasin"
-char3="Cleric"
-char4="Hunter"
+char1="The Warrior"
+char2="The Assasin"
+char3="The Cleric"
+char4="The Hunter"
 
 
 ##########################
@@ -78,15 +50,8 @@ map4="Witch Valley"
 
 
 
-########################################################################################################################################
-# ALL FUNCTIONS :P
-########################################################################################################################################
-
-
-
-
-###############################################
-# Creature  Encounters for The Possessed Woods
+#############################################
+# Creature Variables for The Possessed Woods
 ###############################################
 ghost[0]="Tormented Soul"
 ghost[1]="Demented Ghost"
@@ -96,7 +61,7 @@ ghost[3]="Possessed Swordsman"
 boss1="The Possessed Knight"
 
 ########################################################
-# Creature Encounters for The Damned Paths
+# Creature Variables for The Damned Paths
 #######################################################
 damned[0]="Damned Traveler"
 damned[1]="Damned Soldier"
@@ -107,7 +72,7 @@ boss2="King of The Damned"
 
 
 ###############################################
-# Creature Encounters for Dragons Den
+# Creature Variables for Dragons Den
 ##############################################
 dragon[0]="Ice Dragon"
 dragon[1]="Flame Dragon"
@@ -119,7 +84,7 @@ boss3="The Golden Dragon"
 
 
 ###################################################
-# Creature Encounters for Witch Valley
+# Creature Variables for Witch Valley
 ####################################################
 
 witch[0]="Warlock"
@@ -135,9 +100,43 @@ boss4="Wicked Witch of The Valley"
 
 
 
+########################################################################################################################################
+# ALL FUNCTIONS :P
+########################################################################################################################################
 
 
 
+
+################################################# 
+# spacing function 7 spaces
+##################################################
+function echo_spacer_7 ()
+
+{
+
+echo
+echo
+echo
+echo
+echo
+echo
+echo
+
+}
+
+###############################
+# Spacing Function 4 spaces 
+###############################
+function echo_spacer_4 ()
+
+{
+
+echo
+echo
+echo
+echo
+
+}
 
 ###################################
 # ASCII Art Functions 
@@ -233,9 +232,9 @@ done
 clear
 }
 
-################################
+######################################
 # Function for Player Confirmation
-###############################
+######################################
 function get_player_confirmation ()
 {
 while [[ $response != "y" ]]; do
@@ -279,7 +278,7 @@ done
 ####################################################################################
 # Function for Battle Damage Number Roll Max 10 Damage
 #####################################################################################
-function battle_damage_dice_10_roll ()
+function battle_damage_dice_roll_10 ()
 {
 
 battle_confirmation
@@ -322,6 +321,60 @@ echo " You did 5 damage to this creature and took 5 damage. "
 fi
 }
 
+#######################################################
+#  Function for Battle Damage Number Roll Max 20 Damage
+#######################################################
+function battle_damage_dice_roll_20 ()
+
+{ 
+
+ battle_confirmation
+
+
+echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 10 to destroy this creature. "
+read -r
+echo_spacer_4
+
+
+battle_damage_dice_roll=$((( RANDOM % 20 )  + 1 ))
+
+echo " You did $battle_damage_dice_roll damage to this creature. "
+
+echo_spacer_4
+
+if [[ $battle_damage_dice_roll -gt 10 ]]
+then
+echo " You have defeated this creature. "
+
+echo_spacer_4
+
+
+elif [[ $battle_damage_dice_roll -lt 10 ]]
+then
+echo '                   
+                                                  _            _
+                          _   _  ___  _   _    __| |_  ___  __| | 
+                         | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+                         | |_| | (_) | |_| | | (_| | |  __| (_| | 
+                          \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+                           __/ |                                  
+                          |___/                                   '
+echo_spacer_4
+
+elif [[ $battle_damage_dice_roll == 10 ]]
+then
+echo " You did 10 damage to this creature and took 10 damage. "
+
+fi
+
+
+}
+
+
+
+
+
+
 ########################################################
 # Random Creature Generator Function The Possessed Woods
 ########################################################
@@ -351,10 +404,66 @@ random_creature_generator_golden_den=$(( RANDOM % 4 ))
 echo "${dragon[$random_creature_generator_golden_den]}"
 }
 
-######################################################################
-# What will you do next case selections
-######################################################################
+##########################################################
+# Random Creature Generator Function Witch Valley
+#########################################################
 
+function random_creature_generator_witch_valley ()
+
+{
+
+random_creature_generator_witch_valley=$(( RANDOM % 4 ))
+echo "${witch[$random_creature_generator_witch_valley]}"
+
+}
+
+
+
+
+##########################################################################
+# What will you do next case selection functions for The possessed woods
+##########################################################################
+
+function what_will_you_do_next_possessed_woods ()
+
+{
+
+
+while [ -z "$select" ]
+      do
+         
+        echo " What will you do next? "
+        
+        echo_spacer_4
+
+        echo "1 -Battle this creature"
+        echo
+        echo "2 -Flee from this creature"
+        
+read -r select;
+
+clear
+
+done
+
+clear
+
+case $choice in
+
+        1) echo " You chose to stay and battle this creature to the death."
+           echo_spacer_4           
+           battle_damage_dice_roll_10       
+           ;;
+
+        2) echo " You sense this enemies power and decide not to battle him and flee..Only true cowards flee from thy enemies."
+             ;;
+
+        *) echo " Please make a selection from the list. "
+             ;;
+
+esac
+
+}
 
 
 
@@ -449,7 +558,7 @@ clear
 
 case $class in
 
-     1) echo " You have chosen $char1. The $char1 is known for his strength in combat and has a brutal thirst for his enemies blood to stain his blade... "
+     1) echo " You have chosen $char1. $char1 is known for his strength in combat and has a brutal thirst for his enemies blood to stain his blade... "
           
 	   echo_spacer_4
            
@@ -462,7 +571,7 @@ case $class in
        
         
      
-     2) echo " You have chosen $char2. The $char2 is known for their speed. The shadows are where they reside.."
+     2) echo " You have chosen $char2. $char2 is known for their speed. The shadows are where they reside.."
         
       echo_spacer_4   
 
@@ -474,7 +583,7 @@ case $class in
             ;;
         
 	
-     3) echo " You have chosen $char3. The $char3 is known for having great HP. The fairies have granted them with many blessings. "
+     3) echo " You have chosen $char3. $char3 is known for having great HP. The fairies have granted them with many blessings. "
         
 	echo_spacer_4   
         
@@ -486,7 +595,7 @@ case $class in
             ;;
         
 	
-     4) echo " You have chosen $char4. The $char4 is out for blood and collects the heads of his enemies as trophies after battle. Their defense is strong. "
+     4) echo " You have chosen $char4. $char4 is out for blood and collects the heads of his enemies as trophies after battle. Their defense is strong. "
        
        echo_spacer_4
 	    
@@ -617,15 +726,18 @@ done
 clear
 
 case $choice in
-     1) echo " You have decided to wander the Possessed Woods and encountered a..."
+     1) echo " You have decided to wander $map1 and hear footsteps with leaves crumbling behind you.... You turn around and nothing is there. The crumbling begins to grow louder as you keep walking this time you feel a cold breeze surface the back of your neck. You turn around once more and it is a....."
      
-       echo_spacer_4 
+      echo_spacer_4 
 
-       random_creature_generator_possessed_woods 
-       
-       echo_spacer_4
+      random_creature_generator_possessed_woods
+      
+      echo_spacer_4
+      
+      what_will_you_do_next_possessed_woods
+
+      echo_spacer_4
         
-       battle_damage_dice_10_roll
        
       
        
@@ -641,7 +753,7 @@ case $choice in
 
        echo_spacer_4
 
-       battle_damage_dice_10_roll
+       battle_damage_dice_roll_10
        
      
        
@@ -662,7 +774,7 @@ case $choice in
       
        echo_spacer_4
        
-       battle_damage_dice_10_roll
+       battle_damage_dice_roll_10
       
       
 
