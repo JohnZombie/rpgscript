@@ -432,7 +432,7 @@ function what_will_you_do_next_possessed_woods ()
 while [ -z "$select" ]
       do
          
-        echo " What will you do next? "
+        echo " ~What will you do next?~ "
         
         echo_spacer_4
 
@@ -450,12 +450,12 @@ clear
 
 case $choice in
 
-        1) echo " You chose to stay and battle this creature to the death."
+        1) echo " ~You chose to stay and battle this creature to the death.~"
            echo_spacer_4           
            battle_damage_dice_roll_10       
            ;;
 
-        2) echo " You sense this enemies power and decide not to battle him and flee..Only true cowards flee from thy enemies."
+        2) echo " ~You sense this enemies power and decide not to battle him and flee..Only true cowards flee from thy enemies.~"
              ;;
 
         *) echo " Please make a selection from the list. "
@@ -547,10 +547,10 @@ function create_character_stats ()
 ##############################
 function character_selection ()
 {
-echo "1 - Warrior"
-echo "2 - Assassin"
-echo "3 - Cleric"
-echo "4 - Hunter"
+echo "1 - $char1"
+echo "2 - $char2"
+echo "3 - $char3"
+echo "4 - $char4"
 
 read -r class;
 
@@ -726,7 +726,7 @@ done
 clear
 
 case $choice in
-     1) echo " You have decided to wander $map1 and hear footsteps with leaves crumbling behind you.... You turn around and nothing is there. The crumbling begins to grow louder as you keep walking this time you feel a cold breeze surface the back of your neck. You turn around once more and it is a....."
+     1) echo " You have decided to wander $map1 and hear footsteps with leaves crumbling behind you.... You turn around and nothing is there. The crumbling begins to grow louder as you keep walking this time you feel a cold breeze surface the back of your neck. You turn around once more and encountered a....."
      
       echo_spacer_4 
 
