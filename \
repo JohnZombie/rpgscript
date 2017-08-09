@@ -225,9 +225,6 @@ function randomizing_stats ()
 
 {
 
-
-clear
-
 echo " Your stats will now be randomized due to victory over this creature. "
 
 
@@ -253,7 +250,7 @@ echo " Your stats will now be randomized due to victory over this creature. "
                 stat4_num_base=3
         fi
 
-
+clear
 
         
         echo =======$stat1=======================
@@ -392,8 +389,6 @@ elif [[ $battle_damage_dice_roll == 5 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
 
-echo_spacer_4
-
 battle_damage_dice_roll_10
 
 
@@ -409,6 +404,7 @@ function battle_damage_dice_roll_20 ()
 
 { 
 
+ battle_confirmation
 
 
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 10 to destroy this creature. "
@@ -445,11 +441,7 @@ echo_spacer_4
 
 elif [[ $battle_damage_dice_roll == 10 ]]
 then
-echo " You are clashing with this opponent.. Please re-roll for final outcome. "
-
-battle_damage_dice_roll_20
-
-
+echo " You did 10 damage to this creature and took 10 damage. "
 
 fi
 
