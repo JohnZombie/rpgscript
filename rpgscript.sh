@@ -205,6 +205,43 @@ echo $'    |     {__)'
 echo $'          ()`'
 }
 
+
+
+
+
+############################################################
+# Game Over Function 
+############################################################
+
+function game_over ()
+
+
+{
+
+echo "
+  ________                        ________                     
+ /  _____/_____    _____   ____   \_____  \___  __ ___________ 
+/   \  ___\__  \  /     \_/ __ \   /   |   \  \/ // __ \_  __ \
+\    \_\  \/ __ \|  Y Y  \  ___/  /    |    \   /\  ___/|  | \/
+ \______  (____  /__|_|  /\___  > \_______  /\_/  \___  >__|   
+        \/     \/      \/     \/          \/          \/      
+                                                               "
+
+
+intro_ascii_art
+
+get_player_name
+
+get_player_confirmation
+
+character_selection
+
+map_selection_menu
+
+
+}
+
+
 ###################################
 # Transition Function
 ###################################
@@ -228,7 +265,12 @@ function randomizing_stats ()
 
 clear
 
-echo " Your stats will now be randomized due to victory over this creature. "
+echo " Your stats will now be randomized due to battle victory. "
+
+
+echo_spacer_4
+
+
 
 
         if [[ $class == "1" ]]; then
@@ -256,29 +298,29 @@ echo " Your stats will now be randomized due to victory over this creature. "
 
 
         
-        echo =======$stat1=======================
+        echo =======$stat1~~~~~~~~~~~~~~~~~~~~~~~~~~
                 stat1_num_rand=$(( 1 + RANDOM % 10))
                 stat1_num_final=$(( stat1_num_rand + stat1_num_base ))
                 echo Your characters $stat1 is now: $stat1_num_final
                 echo_spacer_4
-        echo =======$stat2========================
+        echo =======$stat2~~~~~~~~~~~~~~~~~~~~~~~~~~
                 stat2_num_rand=$(( 1  + RANDOM % 10))
                 stat2_num_final=$((stat2_num_rand + stat2_num_base))
                 echo Your characters $stat2 is now: $stat2_num_final
                 echo_spacer_4
-        echo =======$stat3=======================
+        echo =======$stat3~~~~~~~~~~~~~~~~~~~~~~~~~~
                 stat3_num_rand=$(( 1 + RANDOM % 10))
                 stat3_num_final=$((stat3_num_rand + stat3_num_base))
                 echo Your character $stat3 is now: $stat3_num_final
                 echo_spacer_4
-        echo =======$stat4=======================
+        echo =======$stat4~~~~~~~~~~~~~~~~~~~~~~~~~
                 stat4_num_rand=$(( 1 + RANDOM % 10))
                 stat4_num_final=$((stat4_num_rand + stat4_num_base))
                 echo Your character $stat4 is now: $stat4_num_final
 
 
 
-transition_screen
+
 
 
 
@@ -388,6 +430,8 @@ echo '
 			  |___/                                   '
 echo_spacer_4
 
+game_over
+
 elif [[ $battle_damage_dice_roll == 5 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
@@ -442,6 +486,8 @@ echo '
                            __/ |                                  
                           |___/                                   '
 echo_spacer_4
+
+game_over
 
 elif [[ $battle_damage_dice_roll == 10 ]]
 then
@@ -646,7 +692,7 @@ clear
 
 case $class in
 
-     1) echo " You have chosen $char1. $char1 is known for his strength in combat and has a brutal thirst for his enemies blood to stain his blade... "
+     1) echo " You have chosen $char1. $char1 is known for his skill in combat and has a brutal thirst for his enemies blood to stain his blade... "
           
 	   echo_spacer_4
            
@@ -659,7 +705,7 @@ case $class in
        
         
      
-     2) echo " You have chosen $char2. $char2 is known for their speed. The shadows are where they reside.."
+     2) echo " You have chosen $char2. $char2 is known for being quick and stealthy. The shadows are where they reside.."
         
       echo_spacer_4   
 
@@ -671,7 +717,7 @@ case $class in
             ;;
         
 	
-     3) echo " You have chosen $char3. $char3 is known for having great HP. The fairies have granted them with many blessings. "
+     3) echo " You have chosen $char3. $char3 are known for their healing powers. The fairies have granted them with many blessings. "
         
 	echo_spacer_4   
         
@@ -683,7 +729,7 @@ case $class in
             ;;
         
 	
-     4) echo " You have chosen $char4. $char4 is out for blood and collects the heads of his enemies as trophies after battle. Their defense is strong. "
+     4) echo " You have chosen $char4. $char4 is out for blood and collects the heads of his enemies as trophies after battle. "
        
        echo_spacer_4
 	    
@@ -814,7 +860,7 @@ done
 clear
 
 case $choice in
-     1) echo " You have decided to wander $map1 and hear footsteps with leaves crumbling behind you.... You turn around and nothing is there. The crumbling begins to grow louder as you keep walking this time you feel a cold breeze surface the back of your neck. You turn around once more and encountered a....."
+     1) echo " You have decided to wander $map1 and hear footsteps with leaves crumbling behind you.... You turn around and nothing is there. The crumbling begins to grow louder as you keep walking this time you feel a cold breeze on the back of your neck. You turn around once more and encounter a....."
      
       echo_spacer_4 
 
