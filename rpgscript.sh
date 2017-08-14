@@ -556,7 +556,7 @@ fi
 
 }
 ##################################################################################### 
-#Function for Battle Damage Number Roll Max 20 Damage for creature encounters in damned paths
+#Function for Battle Damage Number Roll Max 20 Damage for boss encounter in damned paths
 #####################################################################################
 
 function battle_damage_dice_roll_20_damned_paths ()
@@ -696,7 +696,7 @@ fi
 
 
 ####################################################################################
-# Function for Battle Damage Number Roll Max 20 Damage for creature encounters in golden den
+# Function for Battle Damage Number Roll Max 20 Damage for boss encounter in golden den
 #####################################################################################
 function battle_damage_dice_roll_20_golden_den ()
 
@@ -846,7 +846,7 @@ fi
 
 
 ####################################################################################
-# Function for Battle Damage Number Roll Max 20 Damage for creature encounters in witch valley
+# Function for Battle Damage Number Roll Max 20 Damage for boss encounter in witch valley
 #####################################################################################
 
 
