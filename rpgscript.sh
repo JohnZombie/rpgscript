@@ -227,18 +227,6 @@ echo "
         \/     \/      \/     \/          \/          \/      
                                                                "
 
-
-intro_ascii_art
-
-get_player_name
-
-get_player_confirmation
-
-character_selection
-
-map_selection_menu
-
-
 }
 
 
@@ -387,9 +375,131 @@ done
 }
 
 ####################################################################################
-# Function for Battle Damage Number Roll Max 10 Damage
+# Function for Battle Damage Number Roll Max 10 Damage for creature encounters in Possessed Woods
 #####################################################################################
-function battle_damage_dice_roll_10 ()
+function battle_damage_dice_roll_10_possessed_woods ()
+
+{
+
+
+echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
+
+read -r
+
+echo_spacer_4
+
+
+battle_damage_dice_roll=$((( RANDOM % 10 )  + 1 ))
+
+echo " You did $battle_damage_dice_roll damage to this creature. "
+
+echo_spacer_4
+
+if [[ $battle_damage_dice_roll -gt 5 ]]
+then
+echo " You have defeated this creature. "
+
+
+
+echo_spacer_4
+
+randomizing_stats
+
+
+battle_victory_action_possessed_woods 
+
+
+elif [[ $battle_damage_dice_roll -lt 5 ]]
+then 
+echo '                   
+                                                  _            _
+			  _   _  ___  _   _    __| |_  ___  __| | 
+			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
+			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+			   __/ |                                  
+			  |___/                                   '
+echo_spacer_4
+
+
+
+elif [[ $battle_damage_dice_roll == 5 ]]
+then
+echo " You are clashing with this enemy and are blocking each others moves. Please roll again to determine the finishing outcome... "
+
+echo_spacer_4
+
+battle_damage_dice_roll_10_possessed_woods
+
+
+fi
+
+
+}
+
+#################################################################################
+#  Function for Battle Damage Number Roll Max 20 Damage boss possessed Woods
+#################################################################################
+function battle_damage_dice_roll_20_possessed_woods ()
+
+{ 
+
+
+
+echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 10 to destroy this creature. "
+read -r
+echo_spacer_4
+
+
+battle_damage_dice_roll=$((( RANDOM % 20 )  + 1 ))
+
+echo " You did $battle_damage_dice_roll damage to this creature. "
+
+echo_spacer_4
+
+if [[ $battle_damage_dice_roll -gt 10 ]]
+then
+echo " You have defeated this creature. "
+
+echo_spacer_4
+
+randomizing_stats
+
+battle_victory_action_possessed_woods 
+
+
+elif [[ $battle_damage_dice_roll -lt 10 ]]
+then
+echo '                   
+                                                  _            _
+                          _   _  ___  _   _    __| |_  ___  __| | 
+                         | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+                         | |_| | (_) | |_| | | (_| | |  __| (_| | 
+                          \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+                           __/ |                                  
+                          |___/                                   '
+echo_spacer_4
+
+
+
+elif [[ $battle_damage_dice_roll == 10 ]]
+then
+echo " You are clashing with this opponent.. Please re-roll for final outcome. "
+
+battle_damage_dice_roll_20_possessed_woods
+
+
+
+fi
+
+
+}
+
+
+####################################################################################
+# Function for Battle Damage Number Roll Max 10 Damage for creature encounters in damned paths
+#########################################################################################################################################################################
+function battle_damage_dice_roll_10_damned_paths ()
 
 {
 
@@ -430,7 +540,7 @@ echo '
 			  |___/                                   '
 echo_spacer_4
 
-game_over
+
 
 elif [[ $battle_damage_dice_roll == 5 ]]
 then
@@ -438,25 +548,26 @@ echo " You are clashing with this enemy and blocking each others moves. Please r
 
 echo_spacer_4
 
-battle_damage_dice_roll_10
+battle_damage_dice_roll_10_damned_paths
 
 
 fi
 
 
 }
+##################################################################################### 
+#Function for Battle Damage Number Roll Max 20 Damage for creature encounters in damned paths
+#####################################################################################
 
-#######################################################
-#  Function for Battle Damage Number Roll Max 20 Damage
-#######################################################
-function battle_damage_dice_roll_20 ()
+function battle_damage_dice_roll_20_damned_paths ()
 
-{ 
+{
 
 
+echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
 
-echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 10 to destroy this creature. "
 read -r
+
 echo_spacer_4
 
 
@@ -470,31 +581,33 @@ if [[ $battle_damage_dice_roll -gt 10 ]]
 then
 echo " You have defeated this creature. "
 
+
+
 echo_spacer_4
 
 randomizing_stats
 
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
-then
+then 
 echo '                   
                                                   _            _
-                          _   _  ___  _   _    __| |_  ___  __| | 
-                         | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-                         | |_| | (_) | |_| | | (_| | |  __| (_| | 
-                          \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-                           __/ |                                  
-                          |___/                                   '
+			  _   _  ___  _   _    __| |_  ___  __| | 
+			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
+			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+			   __/ |                                  
+			  |___/                                   '
 echo_spacer_4
 
-game_over
 
 elif [[ $battle_damage_dice_roll == 10 ]]
 then
-echo " You are clashing with this opponent.. Please re-roll for final outcome. "
+echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
 
-battle_damage_dice_roll_20
+echo_spacer_4
 
+battle_damage_dice_roll_20_damned_paths
 
 
 fi
@@ -504,6 +617,350 @@ fi
 
 
 
+
+
+
+
+
+
+
+
+
+####################################################################################
+# Function for Battle Damage Number Roll Max 10 Damage for creature encounters in golden den
+#####################################################################################
+
+function battle_damage_dice_roll_10_golden_den ()
+
+{
+
+
+echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
+
+read -r
+
+echo_spacer_4
+
+
+battle_damage_dice_roll=$((( RANDOM % 10 )  + 1 ))
+
+echo " You did $battle_damage_dice_roll damage to this creature. "
+
+echo_spacer_4
+
+if [[ $battle_damage_dice_roll -gt 5 ]]
+then
+echo " You have defeated this creature. "
+
+
+
+echo_spacer_4
+
+randomizing_stats
+
+
+elif [[ $battle_damage_dice_roll -lt 5 ]]
+then 
+echo '                   
+                                                  _            _
+			  _   _  ___  _   _    __| |_  ___  __| | 
+			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
+			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+			   __/ |                                  
+			  |___/                                   '
+echo_spacer_4
+
+
+
+elif [[ $battle_damage_dice_roll == 5 ]]
+then
+echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
+
+echo_spacer_4
+
+battle_damage_dice_roll_10_golden_den
+
+
+fi
+
+
+}
+
+
+
+
+
+
+
+
+
+####################################################################################
+# Function for Battle Damage Number Roll Max 20 Damage for creature encounters in golden den
+#####################################################################################
+function battle_damage_dice_roll_20_golden_den ()
+
+{
+
+
+echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
+
+read -r
+
+echo_spacer_4
+
+
+battle_damage_dice_roll=$((( RANDOM % 20 )  + 1 ))
+
+echo " You did $battle_damage_dice_roll damage to this creature. "
+
+echo_spacer_4
+
+if [[ $battle_damage_dice_roll -gt 10 ]]
+then
+echo " You have defeated this creature. "
+
+
+
+echo_spacer_4
+
+randomizing_stats
+
+
+elif [[ $battle_damage_dice_roll -lt 10 ]]
+then 
+echo '                   
+                                                  _            _
+			  _   _  ___  _   _    __| |_  ___  __| | 
+			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
+			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+			   __/ |                                  
+			  |___/                                   '
+echo_spacer_4
+
+
+
+elif [[ $battle_damage_dice_roll == 10 ]]
+then
+echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
+
+echo_spacer_4
+
+battle_damage_dice_roll_20_golden_den
+
+
+fi
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################################################################################
+# Function for Battle Damage Number Roll Max 10 Damage for creature encounters in witch valley 
+#####################################################################################
+
+function battle_damage_dice_roll_10_witch_valley ()
+
+{
+
+
+echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
+
+read -r
+
+echo_spacer_4
+
+
+battle_damage_dice_roll=$((( RANDOM % 10 )  + 1 ))
+
+echo " You did $battle_damage_dice_roll damage to this creature. "
+
+echo_spacer_4
+
+if [[ $battle_damage_dice_roll -gt 5 ]]
+then
+echo " You have defeated this creature. "
+
+
+
+echo_spacer_4
+
+randomizing_stats
+
+
+elif [[ $battle_damage_dice_roll -lt 5 ]]
+then 
+echo '                   
+                                                  _            _
+			  _   _  ___  _   _    __| |_  ___  __| | 
+			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
+			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+			   __/ |                                  
+			  |___/                                   '
+echo_spacer_4
+
+
+
+elif [[ $battle_damage_dice_roll == 5 ]]
+then
+echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
+
+echo_spacer_4
+
+battle_damage_dice_roll_10_witch_valley
+
+
+fi
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################################################################################
+# Function for Battle Damage Number Roll Max 20 Damage for creature encounters in witch valley
+#####################################################################################
+
+
+function battle_damage_dice_roll_20_witch_valley ()
+
+{
+
+
+echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
+
+read -r
+
+echo_spacer_4
+
+
+battle_damage_dice_roll=$((( RANDOM % 20 )  + 1 ))
+
+echo " You did $battle_damage_dice_roll damage to this creature. "
+
+echo_spacer_4
+
+if [[ $battle_damage_dice_roll -gt 10 ]]
+then
+echo " You have defeated this creature. "
+
+
+
+echo_spacer_4
+
+randomizing_stats
+
+
+elif [[ $battle_damage_dice_roll -lt 10 ]]
+then 
+echo '                   
+                                                  _            _
+			  _   _  ___  _   _    __| |_  ___  __| | 
+			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
+			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+			   __/ |                                  
+			  |___/                                   '
+echo_spacer_4
+
+
+
+elif [[ $battle_damage_dice_roll == 10 ]]
+then
+echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
+
+echo_spacer_4
+
+battle_damage_dice_roll_20_witch_valley
+
+
+fi
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#########################################################
+# After Battle Victory Actions Function
+########################################################
+function battle_victory_action_possessed_woods ()
+
+{
+
+clear
+
+
+
+echo " What will you do next as you wander $map1 ? "
+        
+     echo "1 -Battle More Creatures"
+     echo "2 -Leave The Possessed Woods"
+     echo "3 -Find The Possessed Knight"
+
+case $decision in
+
+    1) echo " You are a savage! You wander in search of more creatures to battle and come across a.... "
+         ;;
+      
+    2) echo " You chose to leave $map1. "
+         ;;
+ 
+    3) echo " After defeating your creature encounters you chose to keep some alive for interrogation to gather information on $boss1."
+ 
+      ;;
+
+esac 
+
+
+}
 
 
 
@@ -584,7 +1041,7 @@ case $choice in
 
         1) echo " ~You chose to stay and battle this creature to the death.~"
            echo_spacer_4           
-           battle_damage_dice_roll_10       
+           battle_damage_dice_roll_10_possessed_woods       
            ;;
 
         2) echo " ~You sense this enemies power and decide not to battle him and flee..Only true cowards flee from thy enemies.~"
