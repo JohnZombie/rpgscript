@@ -781,9 +781,9 @@ fi
 
 
 
-##########33333333333##########################################################################
+#################################################################################################
 # Function for Battle Damage Number Roll Max 10 Damage for creature encounters in witch valley 
-#333333333####################################################################################
+################################################################################################################
 
 function battle_damage_dice_roll_10_witch_valley ()
 
@@ -939,21 +939,54 @@ clear
 
 
 
+         while [ -z $selection ]
+
+do
+
+
+
+
 echo " What will you do next as you wander $map1 ? "
         
      echo "1 -Battle More Creatures"
      echo "2 -Leave The Possessed Woods"
      echo "3 -Find The Possessed Knight"
 
-case $decision in
+read -r selection;
+
+clear
+
+done
+
+case $choice in
 
     1) echo " You are a savage! You wander in search of more creatures to battle and come across a.... "
+          echo_spacer_4        
+          random_creature_generator_possessed_woods
+          echo_spacer_4
+          battle_damage_dice_roll_10_possessed_woods
+ 
          ;;
       
     2) echo " You chose to leave $map1. "
-         ;;
+        
+
+         
+          
+
+        ;;
+
+
+
+
  
-    3) echo " After defeating your creature encounters you chose to keep some alive for interrogation to gather information on $boss1."
+    3) echo " After defeating your creature encounters you chose to keep some alive for interrogation to gather information on $boss1 and found the dark castle where he resides. You must defeat this creature to proceed to the next map. If you die battling this creature it is GAME OVER....His Dark blade collect the souls of his enemies after victory. "
+
+      echo_spacer_4
+
+      battle_damage_dice_roll_20_possessed_woods
+
+
  
       ;;
 
@@ -1354,7 +1387,9 @@ case $choice in
 
      3) echo " You have chose to leave this map.."
 	unset explore
-               
+       
+       
+
         ;;
     
       4) echo " With days of searching you have found $boss1's Castle...You are hit with a strong evil force as you enter the gates, sending you flying into a wall. $boss1 makes an appearance with a swing of his bewitched sword near your face as you dodge..."
