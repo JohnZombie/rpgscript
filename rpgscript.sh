@@ -218,14 +218,25 @@ function game_over ()
 
 {
 
-echo "
-  ________                        ________                     
+
+
+
+
+echo '
+  _______
  /  _____/_____    _____   ____   \_____  \___  __ ___________ 
 /   \  ___\__  \  /     \_/ __ \   /   |   \  \/ // __ \_  __ \
 \    \_\  \/ __ \|  Y Y  \  ___/  /    |    \   /\  ___/|  | \/
  \______  (____  /__|_|  /\___  > \_______  /\_/  \___  >__|   
         \/     \/      \/     \/          \/          \/      
-                                                               "
+                                                                  '
+
+
+read
+
+clear
+
+
 
 }
 
@@ -374,9 +385,49 @@ done
 
 }
 
+
+
 ####################################################################################
+## You died action function 
+###################################################################################
+function you_died_action ()
+
+{   
+
+clear
+
+echo '                   
+                                                  _            _
+			  _   _  ___  _   _    __| |_  ___  __| | 
+			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
+			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
+			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
+			   __/ |                                   
+                           |___|
+
+   
+
+                                                                       '
+
+
+game_over
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+###################################################################################################
 # Function for Battle Damage Number Roll Max 10 Damage for creature encounters in Possessed Woods
-#####################################################################################
+###################################################################################################
 function battle_damage_dice_roll_10_possessed_woods ()
 
 {
@@ -411,15 +462,10 @@ battle_victory_action_possessed_woods
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then 
-echo '                   
-                                                  _            _
-			  _   _  ___  _   _    __| |_  ___  __| | 
-			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
-			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-			   __/ |                                  
-			  |___/                                   '
-echo_spacer_4
+
+you_died_action     
+
+
 
 
 
@@ -470,17 +516,10 @@ battle_victory_action_possessed_woods
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
 then
-echo '                   
-                                                  _            _
-                          _   _  ___  _   _    __| |_  ___  __| | 
-                         | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-                         | |_| | (_) | |_| | | (_| | |  __| (_| | 
-                          \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-                           __/ |                                  
-                          |___/                                   '
-echo_spacer_4
 
+you_died_action
 
+	          
 
 elif [[ $battle_damage_dice_roll == 10 ]]
 then
@@ -530,15 +569,9 @@ randomizing_stats
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then 
-echo '                   
-                                                  _            _
-			  _   _  ___  _   _    __| |_  ___  __| | 
-			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
-			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-			   __/ |                                  
-			  |___/                                   '
-echo_spacer_4
+
+
+you_died_action
 
 
 
@@ -590,15 +623,10 @@ randomizing_stats
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
 then 
-echo '                   
                                                   _            _
-			  _   _  ___  _   _    __| |_  ___  __| | 
-			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
-			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-			   __/ |                                  
-			  |___/                                   '
-echo_spacer_4
+
+you_died_action
+
 
 
 elif [[ $battle_damage_dice_roll == 10 ]]
@@ -661,16 +689,8 @@ randomizing_stats
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then 
-echo '                   
-                                                  _            _
-			  _   _  ___  _   _    __| |_  ___  __| | 
-			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
-			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-			   __/ |                                  
-			  |___/                                   '
-echo_spacer_4
 
+you_died_action
 
 
 elif [[ $battle_damage_dice_roll == 5 ]]
@@ -729,16 +749,10 @@ randomizing_stats
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
 then 
-echo '                   
-                                                  _            _
-			  _   _  ___  _   _    __| |_  ___  __| | 
-			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
-			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-			   __/ |                                  
-			  |___/                                   '
-echo_spacer_4
-
+                                                  
+	
+	
+you_died_action            _
 
 
 elif [[ $battle_damage_dice_roll == 10 ]]
@@ -767,9 +781,9 @@ fi
 
 
 
-####################################################################################
+##########33333333333##########################################################################
 # Function for Battle Damage Number Roll Max 10 Damage for creature encounters in witch valley 
-#####################################################################################
+#333333333####################################################################################
 
 function battle_damage_dice_roll_10_witch_valley ()
 
@@ -802,16 +816,9 @@ randomizing_stats
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then 
-echo '                   
-                                                  _            _
-			  _   _  ___  _   _    __| |_  ___  __| | 
-			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
-			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-			   __/ |                                  
-			  |___/                                   '
-echo_spacer_4
 
+
+you_died_action
 
 
 elif [[ $battle_damage_dice_roll == 5 ]]
@@ -881,16 +888,9 @@ randomizing_stats
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
 then 
-echo '                   
-                                                  _            _
-			  _   _  ___  _   _    __| |_  ___  __| | 
-			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
-			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-			   __/ |                                  
-			  |___/                                   '
-echo_spacer_4
 
+
+you_died_action
 
 
 elif [[ $battle_damage_dice_roll == 10 ]]
@@ -1602,5 +1602,4 @@ get_player_confirmation
 character_selection
 
 map_selection_menu
-
 
