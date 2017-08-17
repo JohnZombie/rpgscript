@@ -122,6 +122,10 @@ echo " |    /\ /      \\       \ /\    | "
 echo " |  /   V        ))       V   \  | "
 echo " |/            //               \| "
 echo "               \V                  "
+echo
+echo
+echo " ~This is a game of pure luck~ "
+
 }
 
 function map_ascii_art () {
@@ -407,6 +411,7 @@ randomizing_stats
 battle_victory_action_possessed_woods
 
 
+
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then
 
@@ -446,22 +451,25 @@ echo_spacer_4
 
 battle_damage_dice_roll=$((( RANDOM % 20 )  + 1 ))
 
-echo " You did $battle_damage_dice_roll damage to this creature. "
+echo " You did $battle_damage_dice_roll damage to $boss1. "
 
 echo_spacer_4
 
 if [[ $battle_damage_dice_roll -gt 10 ]]
 then
-echo " You have defeated this creature. "
-
+echo " *** You have defeated $boss1 *** "
+read
+echo " You have other destinations to visit...This is only the beginning. "
 echo_spacer_4
 
-randomizing_stats
+unset explore
+unset select
+unset choice
 
-battle_victory_action_possessed_woods
+map_selection_menu
 
 
-elif [[ $battle_damage_dice_roll -lt 10 ]]
+elif  [[ $battle_damage_dice_roll -lt 10 ]]
 then
 
 you_died_action
@@ -566,7 +574,10 @@ echo " You have defeated this creature. "
 echo_spacer_4
 
 randomizing_stats
-
+unset explore
+unset select
+unset choice
+map_selection_menu
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
 then
@@ -692,6 +703,12 @@ echo " You have defeated this creature. "
 echo_spacer_4
 
 randomizing_stats
+
+unset explore
+unset select
+unset choice
+map_selection_menu
+
 
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
@@ -831,7 +848,10 @@ echo " You have defeated this creature. "
 echo_spacer_4
 
 randomizing_stats
-
+unset explore
+unset select
+unset choice
+map_selection_menu
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
 then
@@ -875,15 +895,15 @@ fi
 
 
 
-#########################################################
-# After Battle Victory Actions Function
-########################################################
+##########################################################
+# After Battle Victory Actions Function 1 possessed woods
+##########################################################
 function battle_victory_action_possessed_woods ()
 
 {
 
-clear
 
+echo_spacer_4
 
 
          while [ -z $selection ]
@@ -893,7 +913,7 @@ do
 
 
 
-echo " What will you do next as you wander $map1 ? "
+echo " Victory is yours, what will you do now in $map1 ? "
 
      echo "1 -Battle More Creatures"
      echo "2 -Leave The Possessed Woods"
@@ -905,20 +925,25 @@ clear
 
 done
 
-case $choice in
+case $selection in
 
     1) echo " You are a savage! You wander in search of more creatures to battle and come across a.... "
           echo_spacer_4
           random_creature_generator_possessed_woods
           echo_spacer_4
+          unset -f battle_victory_action_possessed_woods
+          unset choice 
+          unset selection
+          unset explore
           battle_damage_dice_roll_10_possessed_woods
-
+          battle_victory_action_possessed_woods_2
          ;;
 
     2) echo " You chose to leave $map1. "
         unset explore
         unset select
         unset choice
+        echo_spacer_4
         map_selection_menu
 
         ;;
@@ -932,7 +957,9 @@ case $choice in
       echo_spacer_4
 
       battle_damage_dice_roll_20_possessed_woods
-
+      
+      
+      
 
 
       ;;
@@ -941,6 +968,53 @@ esac
 
 
 }
+
+##############################################################################
+# After Battle Victory Actions Function 2 possessed woods
+
+###############################################################################
+function battle_victory_action_possessed_woods_2 ()
+
+{
+clear
+         while [ -z $selection ]
+do
+echo " What will you do next as you wander $map1 ? "
+    
+     echo "1 -Leave The Possessed Woods"
+     echo "2 -Find The Possessed Knight"
+
+read -r selection;
+clear
+done
+   
+case $selection in
+    1) echo " You chose to leave $map1. "
+        unset explore
+        unset select
+        unset choice
+        map_selection_menu
+        ;;
+    2) echo " After defeating your creature encounters you chose to keep some alive for interrogation to gather information on $boss1 and found the dark castle where he resides. You must defeat this creature to proceed to the next map. If you die battling this creature it is GAME OVER....His Dark blade collect the souls of his enemies after victory. "
+      echo_spacer_4
+      battle_damage_dice_roll_20_possessed_woods
+     
+      ;;
+esac
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -985,76 +1059,6 @@ random_creature_generator_witch_valley=$(( RANDOM % 4 ))
 echo "${witch[$random_creature_generator_witch_valley]}"
 
 }
-
-
-
-
-
-##########################################################################
-# What will you do next case selection functions for The possessed woods
-##########################################################################
-
-function what_will_you_do_next_possessed_woods ()
-
-{
-
-
-while [ -z "$select" ]
-      do
-
-        echo " ~What will you do next?~ "
-
-        echo_spacer_4
-
-        echo "1 -Battle this creature"
-        echo
-        echo "2 -Flee from this creature"
-
-read -r select;
-
-clear
-
-done
-
-
-case $choice in
-
-        1) echo " ~You chose to stay and battle this creature to the death.~"
-           echo_spacer_4
-           battle_damage_dice_roll_10_possessed_woods
-           ;;
-
-        2) echo " ~You sense this enemies power and decide not to battle him and flee..Only true cowards flee from thy enemies.~"
-             ;;
-
-        *) echo " Please make a selection from the list. "
-             ;;
-
-esac
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1302,8 +1306,7 @@ case $choice in
       echo_spacer_4
       random_creature_generator_possessed_woods
       echo_spacer_4
-      what_will_you_do_next_possessed_woods
-      echo_spacer_4
+      battle_damage_dice_roll_10_possessed_woods
        ;;
 
      2) echo " You chose to battle creatures and will fight a... "
@@ -1311,7 +1314,7 @@ case $choice in
        echo_spacer_4
        random_creature_generator_possessed_woods
        echo_spacer_4
-       battle_damage_dice_roll_10
+       battle_damage_dice_roll_10_possessed_woods
          ;;
 
 
@@ -1331,7 +1334,7 @@ case $choice in
 
        echo_spacer_4
 
-       battle_damage_dice_roll_10
+       battle_damage_dice_roll_20_possessed_woods
 
 
 
@@ -1414,7 +1417,7 @@ esac
 }
 
 ######################################################
-#Dragons Den Selections
+#Golden Den Selections
 ######################################################
 
 function golden_den ()
