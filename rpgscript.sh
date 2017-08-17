@@ -1,10 +1,7 @@
 #!/bin/bash
-
-
 ######################################################################################
 # Game Variables
 ######################################################################################
-
 ###########################
 # Character Class Variables
 ###########################
@@ -12,7 +9,6 @@ char1="The Warrior"
 char2="The Assasin"
 char3="The Cleric"
 char4="The Hunter"
-
 
 ##########################
 # Character Stat Variables
@@ -48,8 +44,6 @@ map2="The Damned Paths"
 map3="Golden Den"
 map4="Witch Valley"
 
-
-
 #############################################
 # Creature Variables for The Possessed Woods
 ###############################################
@@ -57,7 +51,6 @@ ghost[0]="Tormented Soul"
 ghost[1]="Demented Ghost"
 ghost[2]="Ghostly Knight"
 ghost[3]="Possessed Swordsman"
-
 boss1="The Possessed Knight"
 
 ########################################################
@@ -67,9 +60,7 @@ damned[0]="Damned Traveler"
 damned[1]="Damned Soldier"
 damned[2]="Damned Beast"
 damned[3]="Damned Hunter"
-
 boss2="King of The Damned"
-
 
 ###############################################
 # Creature Variables for Dragons Den
@@ -78,42 +69,24 @@ dragon[0]="Ice Dragon"
 dragon[1]="Flame Dragon"
 dragon[2]="Water Dragon"
 dragon[3]="Zombie Dragon"
-
 boss3="The Golden Dragon"
-
-
 
 ###################################################
 # Creature Variables for Witch Valley
 ####################################################
-
 witch[0]="Warlock"
 witch[1]="Witch Doctor"
 witch[2]="Black Mage"
 witch[3]="Witches Apprentice"
-
-
 boss4="Wicked Witch of The Valley"
-
-
-
-
-
 
 ########################################################################################################################################
 # ALL FUNCTIONS :P
 ########################################################################################################################################
-
-
-
-
-################################################# 
+#################################################
 # spacing function 7 spaces
 ##################################################
-function echo_spacer_7 ()
-
-{
-
+function echo_spacer_7 () {
 echo
 echo
 echo
@@ -121,28 +94,22 @@ echo
 echo
 echo
 echo
-
 }
 
 ###############################
-# Spacing Function 4 spaces 
+# Spacing Function 4 spaces
 ###############################
-function echo_spacer_4 ()
-
-{
-
+function echo_spacer_4 () {
 echo
 echo
 echo
 echo
-
 }
 
 ###################################
-# ASCII Art Functions 
+# ASCII Art Functions
 ###################################
-function intro_ascii_art ()
-{
+function intro_ascii_art () {
 echo "        ,     \    /      ,        "
 echo "       / \    )\__/(     / \       "
 echo "      /   \  (_\  /_)   /   \      "
@@ -157,8 +124,7 @@ echo " |/            //               \| "
 echo "               \V                  "
 }
 
-function map_ascii_art ()
-{
+function map_ascii_art () {
 echo "                 __           '.   \  :  /   .'
                      /. _\            '.  \ : /  .'
                 .--.|/_/__      -----____   _  _____-----
@@ -205,41 +171,22 @@ echo $'    |     {__)'
 echo $'          ()`'
 }
 
-
-
-
-
 ############################################################
-# Game Over Function 
+# Game Over Function
 ############################################################
-
-function game_over ()
-
-
-{
-
-
-
-
-
+function game_over () {
 echo '
   _______
- /  _____/_____    _____   ____   \_____  \___  __ ___________ 
+ /  _____/_____    _____   ____   \_____  \___  __ ___________
 /   \  ___\__  \  /     \_/ __ \   /   |   \  \/ // __ \_  __ \
 \    \_\  \/ __ \|  Y Y  \  ___/  /    |    \   /\  ___/|  | \/
- \______  (____  /__|_|  /\___  > \_______  /\_/  \___  >__|   
-        \/     \/      \/     \/          \/          \/      
+ \______  (____  /__|_|  /\___  > \_______  /\_/  \___  >__|
+        \/     \/      \/     \/          \/          \/
                                                                   '
 
-
 read
-
 clear
-
-
-
 }
-
 
 ###################################
 # Transition Function
@@ -296,7 +243,7 @@ echo_spacer_4
 
 
 
-        
+
         echo =======$stat1~~~~~~~~~~~~~~~~~~~~~~~~~~
                 stat1_num_rand=$(( 1 + RANDOM % 10))
                 stat1_num_final=$(( stat1_num_rand + stat1_num_base ))
@@ -359,7 +306,7 @@ while [[ $response != "y" ]]; do
 done
 
 clear
-       
+
 echo " Hello $player_name_input, Please pick a character class and hit enter. "
 }
 
@@ -372,11 +319,11 @@ while [[ $confirmation != "y" ]]; do
         read -r -p " Do you wish to battle thy enemy? [y/n] " confirmation
         if [[ "$confirmation" =~ ^(y)$ ]]; then
                 echo ""
-                 
+
         elif [[ "$confirmation" =~ ^(n)$ ]]; then
                 echo " Dont be a coward!!!..... "
                battle_confirmation
-                
+
        fi
 
 
@@ -388,24 +335,24 @@ done
 
 
 ####################################################################################
-## You died action function 
+## You died action function
 ###################################################################################
 function you_died_action ()
 
-{   
+{
 
 clear
 
-echo '                   
+echo '
                                                   _            _
-			  _   _  ___  _   _    __| |_  ___  __| | 
-			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` | 
-			 | |_| | (_) | |_| | | (_| | |  __| (_| | 
-			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_| 
-			   __/ |                                   
+			  _   _  ___  _   _    __| |_  ___  __| |
+			 | | | |/ _ \| | | |  / _` | |/ _ \/ _` |
+			 | |_| | (_) | |_| | | (_| | |  __| (_| |
+			  \__, |\___/ \__,_|  \__,_|_|\___|\__,_|
+			   __/ |
                            |___|
 
-   
+
 
                                                                        '
 
@@ -457,13 +404,13 @@ echo_spacer_4
 randomizing_stats
 
 
-battle_victory_action_possessed_woods 
+battle_victory_action_possessed_woods
 
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
-then 
+then
 
-you_died_action     
+you_died_action
 
 
 
@@ -488,7 +435,7 @@ fi
 #################################################################################
 function battle_damage_dice_roll_20_possessed_woods ()
 
-{ 
+{
 
 
 
@@ -511,7 +458,7 @@ echo_spacer_4
 
 randomizing_stats
 
-battle_victory_action_possessed_woods 
+battle_victory_action_possessed_woods
 
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
@@ -519,7 +466,7 @@ then
 
 you_died_action
 
-	          
+
 
 elif [[ $battle_damage_dice_roll == 10 ]]
 then
@@ -568,7 +515,7 @@ randomizing_stats
 
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
-then 
+then
 
 
 you_died_action
@@ -588,7 +535,7 @@ fi
 
 
 }
-##################################################################################### 
+#####################################################################################
 #Function for Battle Damage Number Roll Max 20 Damage for boss encounter in damned paths
 #####################################################################################
 
@@ -622,7 +569,7 @@ randomizing_stats
 
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
-then 
+then
                                                   _            _
 
 you_died_action
@@ -688,7 +635,7 @@ randomizing_stats
 
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
-then 
+then
 
 you_died_action
 
@@ -748,10 +695,10 @@ randomizing_stats
 
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
-then 
-                                                  
-	
-	
+then
+
+
+
 you_died_action            _
 
 
@@ -782,7 +729,7 @@ fi
 
 
 #################################################################################################
-# Function for Battle Damage Number Roll Max 10 Damage for creature encounters in witch valley 
+# Function for Battle Damage Number Roll Max 10 Damage for creature encounters in witch valley
 ################################################################################################################
 
 function battle_damage_dice_roll_10_witch_valley ()
@@ -815,7 +762,7 @@ randomizing_stats
 
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
-then 
+then
 
 
 you_died_action
@@ -887,7 +834,7 @@ randomizing_stats
 
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
-then 
+then
 
 
 you_died_action
@@ -947,7 +894,7 @@ do
 
 
 echo " What will you do next as you wander $map1 ? "
-        
+
      echo "1 -Battle More Creatures"
      echo "2 -Leave The Possessed Woods"
      echo "3 -Find The Possessed Knight"
@@ -961,25 +908,25 @@ done
 case $choice in
 
     1) echo " You are a savage! You wander in search of more creatures to battle and come across a.... "
-          echo_spacer_4        
+          echo_spacer_4
           random_creature_generator_possessed_woods
           echo_spacer_4
           battle_damage_dice_roll_10_possessed_woods
- 
+
          ;;
-      
+
     2) echo " You chose to leave $map1. "
         unset explore
         unset select
         unset choice
-        map_selection_menu 
+        map_selection_menu
 
         ;;
 
 
 
 
- 
+
     3) echo " After defeating your creature encounters you chose to keep some alive for interrogation to gather information on $boss1 and found the dark castle where he resides. You must defeat this creature to proceed to the next map. If you die battling this creature it is GAME OVER....His Dark blade collect the souls of his enemies after victory. "
 
       echo_spacer_4
@@ -987,10 +934,10 @@ case $choice in
       battle_damage_dice_roll_20_possessed_woods
 
 
- 
+
       ;;
 
-esac 
+esac
 
 
 }
@@ -1054,15 +1001,15 @@ function what_will_you_do_next_possessed_woods ()
 
 while [ -z "$select" ]
       do
-         
+
         echo " ~What will you do next?~ "
-        
+
         echo_spacer_4
 
         echo "1 -Battle this creature"
         echo
         echo "2 -Flee from this creature"
-        
+
 read -r select;
 
 clear
@@ -1073,8 +1020,8 @@ done
 case $choice in
 
         1) echo " ~You chose to stay and battle this creature to the death.~"
-           echo_spacer_4           
-           battle_damage_dice_roll_10_possessed_woods       
+           echo_spacer_4
+           battle_damage_dice_roll_10_possessed_woods
            ;;
 
         2) echo " ~You sense this enemies power and decide not to battle him and flee..Only true cowards flee from thy enemies.~"
@@ -1183,55 +1130,55 @@ clear
 case $class in
 
      1) echo " You have chosen $char1. $char1 is known for his skill in combat and has a brutal thirst for his enemies blood to stain his blade... "
-          
-	   echo_spacer_4
-           
-	   echo " Character stats are generated at random and will randomize again depending on game progression."		
-           
-	   echo_spacer_7		
-           create_character_stats
-             
-            ;;
-       
-        
-     
-     2) echo " You have chosen $char2. $char2 is known for being quick and stealthy. The shadows are where they reside.."
-        
-      echo_spacer_4   
 
-      echo " Character stats are generated at random and will randomize again depending on game progression."  	
-       
-      echo_spacer_7 
+	   echo_spacer_4
+
+	   echo " Character stats are generated at random and will randomize again depending on game progression."
+
+	   echo_spacer_7
+           create_character_stats
+
+            ;;
+
+
+
+     2) echo " You have chosen $char2. $char2 is known for being quick and stealthy. The shadows are where they reside.."
+
+      echo_spacer_4
+
+      echo " Character stats are generated at random and will randomize again depending on game progression."
+
+      echo_spacer_7
       create_character_stats
-                
+
             ;;
-        
-	
+
+
      3) echo " You have chosen $char3. $char3 are known for their healing powers. The fairies have granted them with many blessings. "
-        
-	echo_spacer_4   
-        
-	echo " Character stats are generated at random and will randomize again depending on game progression."  
-		
-       echo_spacer_7		
+
+	echo_spacer_4
+
+	echo " Character stats are generated at random and will randomize again depending on game progression."
+
+       echo_spacer_7
        create_character_stats
-                
+
             ;;
-        
-	
+
+
      4) echo " You have chosen $char4. $char4 is out for blood and collects the heads of his enemies as trophies after battle. "
-       
+
        echo_spacer_4
-	    
-     echo " Character stats are generated at random and will randomize again depending on game progression."        
+
+     echo " Character stats are generated at random and will randomize again depending on game progression."
      echo_spacer_7
-		
+
      create_character_stats
-                
+
          ;;
-                
-        
-	
+
+
+
      *) echo " Please pick a class from the list. "
 		character_selection
 		;;
@@ -1277,13 +1224,13 @@ read -r
 
 clear
 
-transition_screen 
+transition_screen
 
 echo " You have arrived ashore to The Lost land in search of glory and riches. Many have said this land is a myth, others have searched for many years and never came back from their expeditions...You are here to bring this myth to reality. "
 
 read -r
 
-map_ascii_art 
+map_ascii_art
 
 map_selection_loop
 
@@ -1291,37 +1238,37 @@ clear
 
 case $explore in
       1) echo " You have chosen to wander $map1. Be aware, Those who wander these woods become possessed by pure evil. "
-         
-	      
+
+
 	 echo_spacer_7
 	 possessed_woods
-            
-	 
+
+
 	 ;;
-      
-    
+
+
       2) echo " You have chosen to explore the $map2 .....The Damned never sleep and are hungry for flesh. "
- 
-      
+
+
         echo_spacer_7
         damned_paths
-          
+
           ;;
-      
-  
+
+
       3) echo " You have chosen to visit $map3. The heat in these dens keep strangers out.. The gold is said to be precious and breathe taking, many have died in attempt toleave the den with these riches."
-            
-	 echo_spacer_7  
-	 golden_den     
+
+	 echo_spacer_7
+	 golden_den
 	  ;;
-      
+
       4) echo " You have chosen to walk $map4 .... The magic is strong here,the sun is never present, Stay aware of your surroundings."
-          
-         
+
+
          echo_spacer_7
          witch_valley
            ;;
-     
+
       *) echo " Please chose your destination for travel.";;
 esac
 
@@ -1351,47 +1298,47 @@ clear
 
 case $choice in
      1) echo " You have decided to wander $map1 and hear footsteps with leaves crumbling behind you.... You turn around and nothing is there. The crumbling begins to grow louder as you keep walking this time you feel a cold breeze on the back of your neck. You turn around once more and encounter a....."
-     
-      echo_spacer_4 
+
+      echo_spacer_4
       random_creature_generator_possessed_woods
       echo_spacer_4
       what_will_you_do_next_possessed_woods
       echo_spacer_4
        ;;
-     
+
      2) echo " You chose to battle creatures and will fight a... "
-      
+
        echo_spacer_4
        random_creature_generator_possessed_woods
        echo_spacer_4
        battle_damage_dice_roll_10
          ;;
-    
+
 
      3) echo " You have chose to leave this map.."
 	unset explore
 	unset select
  	unset choice
         map_selection_menu
-      
+
         ;;
-    
+
       4) echo " With days of searching you have found $boss1's Castle...You are hit with a strong evil force as you enter the gates, sending you flying into a wall. $boss1 makes an appearance with a swing of his bewitched sword near your face as you dodge..."
-        
+
        echo_spacer_7
 
        possessed_knight
-      
+
        echo_spacer_4
-       
+
        battle_damage_dice_roll_10
-      
-      
+
+
 
 
         ;;
-     
-     
+
+
       *)  echo " Please make a selection from the list...."
 
         ;;
@@ -1424,43 +1371,43 @@ clear
 
 case $choice in
      1) echo " You have decided to walk The Damned Paths and encountered...."
-      
+
        echo_spacer_7
        random_creature_generator_damned_paths
        transition_screen
        echo_spacer_7
-       
-       
+
+
 
         ;;
-     
+
      2) echo " The damned are nested in almost every path , you come across a... "
-       
+
        echo_spacer_7
        random_creature_generator_damned_paths
-       echo_spacer_7  
-      
-       
-       
+       echo_spacer_7
+
+
+
         ;;
-    
+
      3) echo " You have chose to leave this map.."
 	unset explore
         unset select
         unset choice
         map_selection_menu
 	;;
-     
-     
+
+
      4)
         echo " $boss2 is the ruler of all evil in The Damned Paths ...Defeat him and you will free all enslaved from the damned paths."
-       
+
        	echo_spacer_7
-	
-        
-       
+
+
+
        	;;
-    
+
 
       *) echo " Please make a selection from the list....";;
 esac
@@ -1492,43 +1439,43 @@ clear
 
 case $choice in
      1) echo " You are searching for Gold and have awoken Dragon from its slumber.... He then lunges towards you with all of his might. What will you do next? "
-      
+
        echo_spacer_7
        random_creature_generator_golden_den
        echo_spacer_7
-       
-       
+
+
 
         ;;
-     
+
      2) echo " You ignore all of the precious gold and decide to wake up dragons for battle. "
-       
+
        echo_spacer_7
        random_creature_generator_golden_den
-       echo_spacer_7  
-      
-       
-       
+       echo_spacer_7
+
+
+
         ;;
-    
+
      3) echo " You have chose to leave this map.."
         unset explore
         unset select
         unset choice
         map_selection_menu
-	
+
 	;;
-     
-     
+
+
      4)
-        echo " $boss3 is the ruler of all gold on The Lost Island...You come across his nest of gold as you are wandering the den. He makes an appearance in gold so bright that the sun has no chance. You are blinded by his golden presence and lose site of him. $boss3 is not very happy to see you in his dens."       
-       	
+        echo " $boss3 is the ruler of all gold on The Lost Island...You come across his nest of gold as you are wandering the den. He makes an appearance in gold so bright that the sun has no chance. You are blinded by his golden presence and lose site of him. $boss3 is not very happy to see you in his dens."
+
         echo_spacer_7
-	
-        
-       
+
+
+
        	;;
-    
+
 
       *) echo " Please make a selection from the list....";;
 esac
@@ -1564,65 +1511,49 @@ clear
 
 case $choice in
      1) echo " You are strolling through the $map4 for potions and remedies to heal your wounds from your on-going battles. The valley is pitch black with little light in sight. A pair of red glowing eyes make an appearance and the air becomes cold. You cannot get a visual of this creature. What will you do next? "
-      
+
        echo_spacer_7
        random_creature_generator_golden_den
        echo_spacer_7
-       
-       
+
+
 
         ;;
-     
+
      2) echo " You scream a battle cry in the valley calling out onto all creatures for a challenge. It is silent and all you hear are echoes of your voice. Red lights begin to flicker in all directions...but these are not lights, these are the eyes of blood thirsty enemies. You are now surrounded, what do you do? "
-       
+
        echo_spacer_7
        random_creature_generator_golden_den
-       echo_spacer_7  
-      
-       
-       
+       echo_spacer_7
+
+
+
         ;;
-    
+
      3) echo " You have chose to leave this map.."
  	unset explore
         unset select
         unset choice
-        map_selection_menu	
+        map_selection_menu
 	;;
-     
-     
+
+
      4)
-        echo " You see lights up ahead as you are wandering the dark valley. Goblets of fire light your path to the entrance. The door is slightly open with the smell of death lingering through its cracks. What do you do next?"       
-       	
+        echo " You see lights up ahead as you are wandering the dark valley. Goblets of fire light your path to the entrance. The door is slightly open with the smell of death lingering through its cracks. What do you do next?"
         echo_spacer_7
-	
-        
-       
        	;;
-    
+
 
       *) echo " Please make a selection from the list....";;
 esac
 }
 
-
-
-
-
-
-
 #######################################################################################################################################################
 # This is where the script runs in order from functions made and statements
 #######################################################################################################################################################
 clear
-
 intro_ascii_art
-
 get_player_name
-
 get_player_confirmation
-
 character_selection
-
 map_selection_menu
-
