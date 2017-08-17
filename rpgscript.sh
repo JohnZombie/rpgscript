@@ -969,10 +969,10 @@ case $choice in
          ;;
       
     2) echo " You chose to leave $map1. "
-        
-
-         
-          
+        unset explore
+        unset select
+        unset choice
+        map_selection_menu 
 
         ;;
 
@@ -1353,43 +1353,27 @@ case $choice in
      1) echo " You have decided to wander $map1 and hear footsteps with leaves crumbling behind you.... You turn around and nothing is there. The crumbling begins to grow louder as you keep walking this time you feel a cold breeze on the back of your neck. You turn around once more and encounter a....."
      
       echo_spacer_4 
-
       random_creature_generator_possessed_woods
-      
       echo_spacer_4
-      
       what_will_you_do_next_possessed_woods
-
       echo_spacer_4
-        
-       
-      
-       
-      
-
        ;;
      
      2) echo " You chose to battle creatures and will fight a... "
       
        echo_spacer_4
-
        random_creature_generator_possessed_woods
-
        echo_spacer_4
-
        battle_damage_dice_roll_10
-       
-     
-       
-      
          ;;
     
 
      3) echo " You have chose to leave this map.."
 	unset explore
-       
-       
-
+	unset select
+ 	unset choice
+        map_selection_menu
+      
         ;;
     
       4) echo " With days of searching you have found $boss1's Castle...You are hit with a strong evil force as you enter the gates, sending you flying into a wall. $boss1 makes an appearance with a swing of his bewitched sword near your face as you dodge..."
@@ -1461,9 +1445,10 @@ case $choice in
         ;;
     
      3) echo " You have chose to leave this map.."
-	
 	unset explore
-        
+        unset select
+        unset choice
+        map_selection_menu
 	;;
      
      
@@ -1527,9 +1512,11 @@ case $choice in
         ;;
     
      3) echo " You have chose to leave this map.."
+        unset explore
+        unset select
+        unset choice
+        map_selection_menu
 	
-	unset explore
-        
 	;;
      
      
@@ -1597,9 +1584,10 @@ case $choice in
         ;;
     
      3) echo " You have chose to leave this map.."
-	
-	unset explore
-        
+ 	unset explore
+        unset select
+        unset choice
+        map_selection_menu	
 	;;
      
      
