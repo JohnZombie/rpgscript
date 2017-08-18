@@ -60,7 +60,7 @@ damned[0]="Damned Traveler"
 damned[1]="Damned Soldier"
 damned[2]="Damned Beast"
 damned[3]="Damned Hunter"
-boss2="King of The Damned"
+boss2="The King of The Damned"
 
 ###############################################
 # Creature Variables for Dragons Den
@@ -78,7 +78,7 @@ witch[0]="Warlock"
 witch[1]="Witch Doctor"
 witch[2]="Black Mage"
 witch[3]="Witches Apprentice"
-boss4="Wicked Witch of The Valley"
+boss4="The Wicked Witch of The Valley"
 
 ########################################################################################################################################
 # ALL FUNCTIONS :P
@@ -205,6 +205,21 @@ Name: $player_name_input ****  $stat1: $stat1_num_final **** $stat2: $stat2_num_
 [O\\\\\[========================-[O\\\\\[========================-[O\\\\\[========================-[O\\\\\[========================-##############
 "
 }
+
+################################
+#unset fucntion
+################################
+function unset_function ()
+
+{
+
+    unset explore
+    unset select
+    unset choice
+
+}
+
+
 
 #################################################################
 # Randomizing of stats after battle function
@@ -401,21 +416,14 @@ echo_spacer_4
 if [[ $battle_damage_dice_roll -gt 5 ]]
 then
 echo " You have defeated this creature. "
-
-
-
 echo_spacer_4
-
 randomizing_stats
-
-
 battle_victory_action_possessed_woods
 
 
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then
-
 you_died_action
 
 
@@ -425,9 +433,7 @@ you_died_action
 elif [[ $battle_damage_dice_roll == 5 ]]
 then
 echo " You are clashing with this enemy and are blocking each others moves. Please roll again to determine the finishing outcome... "
-
 echo_spacer_4
-
 battle_damage_dice_roll_10_possessed_woods
 
 
@@ -462,11 +468,7 @@ echo " *** You have defeated $boss1 *** "
 read
 echo " You have other destinations to visit...This is only the beginning. "
 echo_spacer_4
-
-unset explore
-unset select
-unset choice
-
+unset_function
 map_selection_menu
 
 
@@ -491,7 +493,7 @@ fi
 }
 
 
-####################################################################################
+##################################################################################################################################################
 # Function for Battle Damage Number Roll Max 10 Damage for creature encounters in damned paths
 #########################################################################################################################################################################
 function battle_damage_dice_roll_10_damned_paths ()
@@ -515,18 +517,12 @@ echo_spacer_4
 if [[ $battle_damage_dice_roll -gt 5 ]]
 then
 echo " You have defeated this creature. "
-
-
-
 echo_spacer_4
-
 randomizing_stats
-
+battle_victory_action_damned_paths
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then
-
-
 you_died_action
 
 
@@ -534,9 +530,7 @@ you_died_action
 elif [[ $battle_damage_dice_roll == 5 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
-
 echo_spacer_4
-
 battle_damage_dice_roll_10_damned_paths
 
 
@@ -575,9 +569,7 @@ echo " You have defeated this creature. "
 echo_spacer_4
 
 randomizing_stats
-unset explore
-unset select
-unset choice
+unset_function
 map_selection_menu
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
@@ -933,17 +925,13 @@ case $selection in
           random_creature_generator_possessed_woods
           echo_spacer_4
           unset -f battle_victory_action_possessed_woods
-          unset choice 
-          unset selection
-          unset explore
+          unset_function 
           battle_damage_dice_roll_10_possessed_woods
           battle_victory_action_possessed_woods_2
          ;;
 
     2) echo " You chose to leave $map1. "
-        unset explore
-        unset select
-        unset choice
+        unset_function
         echo_spacer_4
         map_selection_menu
 
@@ -954,15 +942,8 @@ case $selection in
 
 
     3) echo " After defeating your creature encounters you chose to keep some alive for interrogation to gather information on $boss1 and found the dark castle where he resides. You must defeat this creature to proceed to the next map. If you die battling this creature it is GAME OVER....His Dark blade collect the souls of his enemies after victory. "
-
       echo_spacer_4
-
       battle_damage_dice_roll_20_possessed_woods
-      
-      
-      
-
-
       ;;
 
 esac
@@ -983,7 +964,7 @@ do
 echo " What will you do next as you wander $map1 ? "
     
      echo "1 -Leave The Possessed Woods"
-     echo "2 -Find The Possessed Knight"
+     echo "2 -Find $boss1"
 
 read -r selection;
 clear
@@ -991,10 +972,8 @@ done
    
 case $selection in
     1) echo " You chose to leave $map1. "
-        unset explore
-        unset select
-        unset choice
-        map_selection_menu
+       unset_function 
+       map_selection_menu
         ;;
     2) echo " After defeating your creature encounters you chose to keep some alive for interrogation to gather information on $boss1 and found the dark castle where he resides. You must defeat this creature to proceed to the next map. If you die battling this creature it is GAME OVER....His Dark blade collect the souls of his enemies after victory. "
       echo_spacer_4
@@ -1007,9 +986,89 @@ esac
 
 
 
+#########################################################################
+# After Battle Victory actions damned paths
+########################################################################
+function battle_victory_action_damned_paths ()
+
+{
+
+echo_spacer_4
 
 
+   while [ -z $selection ]
+do
 
+       echo " You are beast! All enemies fall in your path. "
+  
+          echo "1 - Battle More Creatures To The Death"
+          echo "2 - Leave $map2"
+          echo "3 - Rip $boss2's Head off"
+
+read -r selection;
+
+clear
+
+done
+
+case $selection in
+
+   1)  echo " Dont get too cocky now..... "
+          echo_spacer_4
+          random_creature_generator_damned_paths
+          echo_spacer_4
+          unset -f battle_victory_action_damned_paths
+          unset_function
+          battle_damage_dice_roll_10_damned_paths
+          battle_victory_action_damned_paths_2
+          
+          ;;
+
+    2) echo " You chose to leave $map2. "
+        unset_function
+        echo_spacer_4
+        map_selection_menu
+
+        ;;
+esac
+
+}
+#########################################################################
+# After Battle Victory actions function 2 damned paths
+###########################################################################
+function battle_victory_action_damned_paths_2 ()
+
+{
+
+   clear
+
+       while [ -z $selection ]
+do
+echo " what will you do next? "
+       
+    echo " 1 - Leave $map2 "
+    echo " 2 - Find $boss2 "
+
+read -r selection; 
+clear
+done
+
+case $selection in
+
+	1) echo " You chose to leave $map2."
+           unset_function
+	   map_selection_menu
+	   ;;
+
+	2) echo " You have no mercy for thy enemies and will destroy anything that gets in your path. The paths have many damned souls begging for freedom from the paths. Only defeating the $boss2 will free these souls. You must collect his head with the dark crown and set it on fire to free the souls."
+	echo_spacer_4
+	battle_damage_dice_roll_20_damned_paths
+	;;
+
+
+esac
+
+}
 
 
 
@@ -1376,10 +1435,11 @@ clear
 case $choice in
      1) echo " You have decided to walk The Damned Paths and encountered...."
 
-       echo_spacer_7
+       echo_spacer_4
        random_creature_generator_damned_paths
-       transition_screen
-       echo_spacer_7
+       echo_spacer_4
+       battle_damage_dice_roll_10_damned_paths
+       
 
 
 
@@ -1387,18 +1447,18 @@ case $choice in
 
      2) echo " The damned are nested in almost every path , you come across a... "
 
-       echo_spacer_7
+       echo_spacer_4
        random_creature_generator_damned_paths
-       echo_spacer_7
+       echo_spacer_4
+       battle_damage_dice_roll_10_damned_paths
+       
 
 
 
         ;;
 
      3) echo " You have chose to leave this map.."
-	unset explore
-        unset select
-        unset choice
+	unset_function
         map_selection_menu
 	;;
 
@@ -1406,7 +1466,8 @@ case $choice in
      4)
         echo " $boss2 is the ruler of all evil in The Damned Paths ...Defeat him and you will free all enslaved from the damned paths."
 
-       	echo_spacer_7
+       	echo_spacer_4
+	battle_damage_dice_roll_20_damned_paths
 
 
 
