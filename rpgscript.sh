@@ -631,12 +631,9 @@ if [[ $battle_damage_dice_roll -gt 5 ]]
 then
 echo " You have defeated this creature. "
 
-
-
 echo_spacer_4
-
 randomizing_stats
-
+battle_victory_action_golden_den
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then
@@ -1600,7 +1597,7 @@ case $choice in
        echo_spacer_7
        random_creature_generator_golden_den
        echo_spacer_7
-
+       battle_damage_dice_roll_10_golden_den
 
 
         ;;
@@ -1610,15 +1607,13 @@ case $choice in
        echo_spacer_7
        random_creature_generator_golden_den
        echo_spacer_7
-
+       battle_damage_dice_roll_10_golden_den
 
 
         ;;
 
      3) echo " You have chose to leave this map.."
-        unset explore
-        unset select
-        unset choice
+        unset_function
         map_selection_menu
 
 	;;
