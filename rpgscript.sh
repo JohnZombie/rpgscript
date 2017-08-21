@@ -696,10 +696,7 @@ echo " You have defeated this creature. "
 echo_spacer_4
 
 randomizing_stats
-
-unset explore
-unset select
-unset choice
+unset_function
 map_selection_menu
 
 
@@ -841,9 +838,7 @@ echo " You have defeated this creature. "
 echo_spacer_4
 
 randomizing_stats
-unset explore
-unset select
-unset choice
+unset_function
 map_selection_menu
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
@@ -924,8 +919,8 @@ case $selection in
           echo_spacer_4
           random_creature_generator_possessed_woods
           echo_spacer_4
-          unset -f battle_victory_action_possessed_woods
-          unset_function 
+          unset_function
+          unset -f battle_victory_action_possessed_woods 
           battle_damage_dice_roll_10_possessed_woods
           battle_victory_action_possessed_woods_2
          ;;
@@ -943,7 +938,9 @@ case $selection in
 
     3) echo " After defeating your creature encounters you chose to keep some alive for interrogation to gather information on $boss1 and found the dark castle where he resides. You must defeat this creature to proceed to the next map. If you die battling this creature it is GAME OVER....His Dark blade collect the souls of his enemies after victory. "
       echo_spacer_4
+      possessed_knight
       battle_damage_dice_roll_20_possessed_woods
+      
       ;;
 
 esac
@@ -959,24 +956,25 @@ function battle_victory_action_possessed_woods_2 ()
 
 {
 clear
-         while [ -z $selection ]
+	while [ -z $choice ]
 do
 echo " What will you do next as you wander $map1 ? "
     
-     echo "1 -Leave The Possessed Woods"
+     echo "1 -Leave $map1"
      echo "2 -Find $boss1"
 
-read -r selection;
+read -r choice;
 clear
 done
    
-case $selection in
+case $choice in
     1) echo " You chose to leave $map1. "
        unset_function 
        map_selection_menu
         ;;
     2) echo " After defeating your creature encounters you chose to keep some alive for interrogation to gather information on $boss1 and found the dark castle where he resides. You must defeat this creature to proceed to the next map. If you die battling this creature it is GAME OVER....His Dark blade collect the souls of his enemies after victory. "
       echo_spacer_4
+      possessed_knight
       battle_damage_dice_roll_20_possessed_woods
      
       ;;
@@ -1042,18 +1040,18 @@ function battle_victory_action_damned_paths_2 ()
 
    clear
 
-       while [ -z $selection ]
+       while [ -z $choice ]
 do
 echo " what will you do next? "
        
     echo " 1 - Leave $map2 "
     echo " 2 - Find $boss2 "
 
-read -r selection; 
+read -r choice; 
 clear
 done
 
-case $selection in
+case $choice in
 
 	1) echo " You chose to leave $map2."
            unset_function
@@ -1071,7 +1069,101 @@ esac
 }
 
 
+########################################################
+After Battle Victory Actions Function 1 Golden Den
+##########################################################
+function battle_victory_action_golden_den ()
 
+{
+
+
+echo_spacer_4
+
+
+         while [ -z $selection ]
+
+do
+
+
+
+
+echo " Victory is yours, what will you do now in $map3 ? "
+
+     echo "1 -Battle More Dragons to the Death!"
+     echo "2 -Leave $map3"
+     echo "3 -Find $boss3"
+
+read -r selection;
+
+clear
+
+done
+
+case $selection in
+
+    1) echo " Dragons are among the strongest creatures. You wander in search of more dragons to battle and come across a.... "
+          echo_spacer_4
+          random_creature_generator_golden_den
+          echo_spacer_4
+          unset -f battle_victory_action_golden_den
+          unset_function 
+          battle_damage_dice_roll_10_golden_den
+          battle_victory_action_golden_den_2
+         ;;
+
+    2) echo " You chose to leave $map3. "
+        unset_function
+        echo_spacer_4
+        map_selection_menu
+
+        ;;
+
+
+
+
+
+    3) echo " The dragons are near extinction, legend has it that there is a $boss3 guarding all the riches in these dens. If you defeat this creature you will be rich for eternity. "
+      echo_spacer_4
+      battle_damage_dice_roll_20_golden_den
+      ;;
+
+esac
+
+
+}
+
+##############################################################################
+# After Battle Victory Actions Function 2 golden den
+
+###############################################################################
+function battle_victory_action_golden_den_2 ()
+
+{
+clear
+         while [ -z $choice ]
+do
+echo " What will you do next as you search $map3 ? "
+    
+     echo "1 -Leave The Possessed Woods"
+     echo "2 -Find $boss3"
+
+read -r choice;
+clear
+done
+   
+case $choice in
+    1) echo " You chose to leave $map3. "
+       unset_function 
+       map_selection_menu
+        ;;
+    2) echo " You must defeat $boss3 in order Collect its head and acquire all of its gold."
+      echo_spacer_4
+      battle_damage_dice_roll_20_golden_den
+     
+      ;;
+esac
+
+}
 
 
 
@@ -1320,7 +1412,7 @@ case $explore in
           ;;
 
 
-      3) echo " You have chosen to visit $map3. The heat in these dens keep strangers out.. The gold is said to be precious and breathe taking, many have died in attempt toleave the den with these riches."
+      3) echo " You have chosen to visit $map3. The heat in these dens keep strangers out.. The gold is said to be precious and breathe taking, many have died in attempt to leave the den with these riches."
 
 	 echo_spacer_7
 	 golden_den
@@ -1536,7 +1628,7 @@ case $choice in
         echo " $boss3 is the ruler of all gold on The Lost Island...You come across his nest of gold as you are wandering the den. He makes an appearance in gold so bright that the sun has no chance. You are blinded by his golden presence and lose site of him. $boss3 is not very happy to see you in his dens."
 
         echo_spacer_7
-
+        battle_damage_dice_roll_20_golden_den
 
 
        	;;
