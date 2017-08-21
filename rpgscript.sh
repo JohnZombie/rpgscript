@@ -41,8 +41,8 @@ declare -i stat4_num_final
 ####################
 map1="The Possessed Woods"
 map2="The Damned Paths"
-map3="Golden Den"
-map4="Witch Valley"
+map3="The Golden Den"
+map4="The Witch Valley"
 
 #############################################
 # Creature Variables for The Possessed Woods
@@ -1163,8 +1163,101 @@ esac
 }
 
 
+#########################################################
+#After Battle Victory Actions Function 1 Witch Valley
+##########################################################
+function battle_victory_action_witch_valley ()
+
+{
 
 
+echo_spacer_4
+
+
+         while [ -z $selection ]
+
+do
+
+
+
+
+echo " You are Fierce!, what will you do now in $map4 ? "
+
+     echo "1 -Battle Enemies"
+     echo "2 -Leave $map4"
+     echo "3 -Find $boss4"
+
+read -r selection;
+
+clear
+
+done
+
+case $selection in
+
+    1) echo " You are wounded from some of your previous battles and are in need of potions and healing components. You search the valley extensively and encounter a..."
+          echo_spacer_4
+          random_creature_generator_witch_valley
+          echo_spacer_4
+          unset -f battle_victory_action_witch_valley
+          unset_function 
+          battle_damage_dice_roll_10_witch_valley
+          battle_victory_action_witch_valley_2
+         ;;
+
+    2) echo " You chose to leave $map4. "
+        unset_function
+        echo_spacer_4
+        map_selection_menu
+
+        ;;
+
+
+
+
+
+    3) echo " $boss4 is the ruler of all powerful dark forces. Her spells are so strong that those who are exposed to it become paralayzed. You must defeat her to leave this lost land for good. She controls this land and all others."
+      echo_spacer_4
+      battle_damage_dice_roll_20_witch_valley
+      ;;
+
+esac
+
+
+}
+
+##############################################################################
+# After Battle Victory Actions Function 2 witch valley
+
+###############################################################################
+function battle_victory_action_witch_valley ()
+
+{
+clear
+         while [ -z $choice ]
+do
+echo " What will you do next as you search $map4 ? "
+    
+     echo "1 -Leave $map4"
+     echo "2 -Find $boss4"
+
+read -r choice;
+clear
+done
+   
+case $choice in
+    1) echo " You chose to leave $map4. "
+       unset_function 
+       map_selection_menu
+        ;;
+    2) echo " You must defeat $boss4 in order to bring light to this valley."
+      echo_spacer_4
+      battle_damage_dice_roll_20_witch_valley
+     
+      ;;
+esac
+
+}
 
 
 ########################################################
@@ -1665,7 +1758,7 @@ case $choice in
      1) echo " You are strolling through the $map4 for potions and remedies to heal your wounds from your on-going battles. The valley is pitch black with little light in sight. A pair of red glowing eyes make an appearance and the air becomes cold. You cannot get a visual of this creature. What will you do next? "
 
        echo_spacer_7
-       random_creature_generator_golden_den
+       random_creature_generator_witch_valley
        echo_spacer_7
 
 
@@ -1675,17 +1768,16 @@ case $choice in
      2) echo " You scream a battle cry in the valley calling out onto all creatures for a challenge. It is silent and all you hear are echoes of your voice. Red lights begin to flicker in all directions...but these are not lights, these are the eyes of blood thirsty enemies. You are now surrounded, what do you do? "
 
        echo_spacer_7
-       random_creature_generator_golden_den
+       random_creature_generator_witch_valley
        echo_spacer_7
+       battle_damage_dice_roll_10_witch_valley
 
 
 
         ;;
 
      3) echo " You have chose to leave this map.."
- 	unset explore
-        unset select
-        unset choice
+ 	unset_function
         map_selection_menu
 	;;
 
@@ -1693,6 +1785,7 @@ case $choice in
      4)
         echo " You see lights up ahead as you are wandering the dark valley. Goblets of fire light your path to the entrance. The door is slightly open with the smell of death lingering through its cracks. What do you do next?"
         echo_spacer_7
+        battle_damage_dice_roll_20_witch_valley
        	;;
 
 
