@@ -217,7 +217,7 @@ It is time to travel back and share your journey with those who believed this la
 
 
 
-
+}
 
 
 
@@ -1815,3 +1815,5 @@ get_player_name
 get_player_confirmation
 character_selection
 map_selection_menu
+
+
