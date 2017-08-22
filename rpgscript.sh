@@ -193,6 +193,34 @@ clear
 exit
 }
 
+
+
+
+#######################################################
+# You win function 
+######################################################
+function you_win ()
+
+{
+
+echo "
+
+ _____.___.________   ____ ___   __      __.___ _______ 
+\__  |   |\_____  \ |    |   \ /  \    /  \   |\      \   | |
+ /   |   | /   |   \|    |   / \   \/\/   /   |/   |   \  | |
+ \____   |/    |    \    |  /   \        /|   /    |    \  \|
+ / ______|\_______  /______/     \__/\  / |___\____|__  /  __
+ \/               \/                  \/              \/   \/
+
+It is time to travel back and share your journey with those who believed this land to be a myth. The land begins to crumble and collapse into the seas as you are departing from The Lost Land. Your boat is full of riches and heads of the defeated creatures."
+
+
+
+
+
+
+
+
 ###################################
 # Transition Function
 ###################################
@@ -413,7 +441,7 @@ echo " You did $battle_damage_dice_roll damage to this creature. "
 
 echo_spacer_4
 
-if [[ $battle_damage_dice_roll -gt 5 ]]
+if [[ $battle_damage_dice_roll -gt 3 ]]
 then
 echo " You have defeated this creature. "
 echo_spacer_4
@@ -422,7 +450,7 @@ battle_victory_action_possessed_woods
 
 
 
-elif [[ $battle_damage_dice_roll -lt 5 ]]
+elif [[ $battle_damage_dice_roll -lt 3 ]]
 then
 you_died_action
 
@@ -430,7 +458,7 @@ you_died_action
 
 
 
-elif [[ $battle_damage_dice_roll == 5 ]]
+elif [[ $battle_damage_dice_roll == 3 ]]
 then
 echo " You are clashing with this enemy and are blocking each others moves. Please roll again to determine the finishing outcome... "
 echo_spacer_4
@@ -462,7 +490,7 @@ echo " You did $battle_damage_dice_roll damage to $boss1. "
 
 echo_spacer_4
 
-if [[ $battle_damage_dice_roll -gt 10 ]]
+if [[ $battle_damage_dice_roll -gt 6 ]]
 then
 echo " *** You have defeated $boss1 *** "
 read
@@ -472,14 +500,14 @@ unset_function
 map_selection_menu
 
 
-elif  [[ $battle_damage_dice_roll -lt 10 ]]
+elif  [[ $battle_damage_dice_roll -lt 6 ]]
 then
 
 you_died_action
 
 
 
-elif [[ $battle_damage_dice_roll == 10 ]]
+elif [[ $battle_damage_dice_roll == 6 ]]
 then
 echo " You are clashing with this opponent.. Please re-roll for final outcome. "
 
@@ -514,20 +542,20 @@ echo " You did $battle_damage_dice_roll damage to this creature. "
 
 echo_spacer_4
 
-if [[ $battle_damage_dice_roll -gt 5 ]]
+if [[ $battle_damage_dice_roll -gt 4 ]]
 then
 echo " You have defeated this creature. "
 echo_spacer_4
 randomizing_stats
 battle_victory_action_damned_paths
 
-elif [[ $battle_damage_dice_roll -lt 5 ]]
+elif [[ $battle_damage_dice_roll -lt 4 ]]
 then
 you_died_action
 
 
 
-elif [[ $battle_damage_dice_roll == 5 ]]
+elif [[ $battle_damage_dice_roll == 4 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
 echo_spacer_4
@@ -560,7 +588,7 @@ echo " You did $battle_damage_dice_roll damage to this creature. "
 
 echo_spacer_4
 
-if [[ $battle_damage_dice_roll -gt 10 ]]
+if [[ $battle_damage_dice_roll -gt 7 ]]
 then
 echo " You have defeated this creature. "
 
@@ -572,7 +600,7 @@ randomizing_stats
 unset_function
 map_selection_menu
 
-elif [[ $battle_damage_dice_roll -lt 10 ]]
+elif [[ $battle_damage_dice_roll -lt 7 ]]
 then
                                                   _            _
 
@@ -580,7 +608,7 @@ you_died_action
 
 
 
-elif [[ $battle_damage_dice_roll == 10 ]]
+elif [[ $battle_damage_dice_roll == 7 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
 
@@ -684,7 +712,7 @@ echo " You did $battle_damage_dice_roll damage to this creature. "
 
 echo_spacer_4
 
-if [[ $battle_damage_dice_roll -gt 10 ]]
+if [[ $battle_damage_dice_roll -gt 9 ]]
 then
 echo " You have defeated this creature. "
 
@@ -698,7 +726,7 @@ map_selection_menu
 
 
 
-elif [[ $battle_damage_dice_roll -lt 10 ]]
+elif [[ $battle_damage_dice_roll -lt 9 ]]
 then
 
 
@@ -706,7 +734,7 @@ then
 you_died_action            _
 
 
-elif [[ $battle_damage_dice_roll == 10 ]]
+elif [[ $battle_damage_dice_roll == 9 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
 
@@ -816,41 +844,30 @@ function battle_damage_dice_roll_20_witch_valley ()
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
 
 read -r
-
 echo_spacer_4
 
 
 battle_damage_dice_roll=$((( RANDOM % 20 )  + 1 ))
 
 echo " You did $battle_damage_dice_roll damage to this creature. "
-
 echo_spacer_4
 
 if [[ $battle_damage_dice_roll -gt 10 ]]
 then
 echo " You have defeated this creature. "
-
-
-
 echo_spacer_4
-
-randomizing_stats
 unset_function
-map_selection_menu
+you_win
 
 elif [[ $battle_damage_dice_roll -lt 10 ]]
 then
-
-
 you_died_action
 
 
 elif [[ $battle_damage_dice_roll == 10 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
-
 echo_spacer_4
-
 battle_damage_dice_roll_20_witch_valley
 
 
@@ -1376,12 +1393,10 @@ clear
 case $class in
 
      1) echo " You have chosen $char1. $char1 is known for his skill in combat and has a brutal thirst for his enemies blood to stain his blade... "
-
-	   echo_spacer_4
+        echo_spacer_4
 
 	   echo " Character stats are generated at random and will randomize again depending on game progression."
-
-	   echo_spacer_7
+           echo_spacer_7
            create_character_stats
 
             ;;
@@ -1389,8 +1404,7 @@ case $class in
 
 
      2) echo " You have chosen $char2. $char2 is known for being quick and stealthy. The shadows are where they reside.."
-
-      echo_spacer_4
+        echo_spacer_4
 
       echo " Character stats are generated at random and will randomize again depending on game progression."
 
@@ -1418,7 +1432,6 @@ case $class in
 
      echo " Character stats are generated at random and will randomize again depending on game progression."
      echo_spacer_7
-
      create_character_stats
 
          ;;
@@ -1426,7 +1439,7 @@ case $class in
 
 
      *) echo " Please pick a class from the list. "
-		character_selection
+        character_selection
 		;;
 esac
 
