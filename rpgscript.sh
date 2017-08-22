@@ -175,6 +175,114 @@ echo $'    |     {__)'
 echo $'          ()`'
 }
 
+
+################################################
+# Witch Valley Witch
+###############################################
+function witch_art ()
+
+{
+
+echo "
+
+
+
+
+      *            xXxx
+                    xXXx     *
+         ^^          xxXXx
+    /\__{^^}__/\      xxXXxx                               *
+   / _        _ \     xxXXxx
+   \/ \/\ww/\/ \/      xxXXxx                     {~~~~\
+                       xxxXxx                      ~\:::~~\
+                *      xxxXxx                        ~~\:::~\
+                        xxXXxx                          \::::\
+                        xxXXxxx          *               }::::}
+                        xxxXxxx                          }::::}
+                        xxxXXxxx                        /::::/
+  *                     xxxxXXxx                       /::::/
+                        xxxxXXxx                   {~~~:::/~
+                        %%xxxxx%%                   ~~~~~~
+                        %%%%%%%%%
+                       %%%%%%%%%%%
+                       %%%%%%%%%%%       *
+           *           %%%%%%%%%%%
+                     xxxxxxxx%%%%%
+                   xxXXXXXXXxxx%%%                ^^         *
+                 xxXx/////xxXxxx%%           /\__{^^}__/\
+         xxxxxxxxxXxx////(/xxXxxx%          / _        _ \
+           XXXXXXXxx//(/(((/xxxXxx          \/ \/\ww/\/ \/
+ *            xxxx////(/(/(/)\\xXxx
+               ///////(/(/(/\)\\xxxx
+               /((/(//(/(/((\/\)xXxxx
+               //(/(/(//(/  \ \)\xxxxx
+               //((//(/( /    \ \\\xxxx         *
+            *   (((///(\   \ /  )\)\xXxx
+               /(//((/(\  @ /@  )\\)\xxxx
+              //(/(///(\::/ \:::)\\))\xxxx
+             /(/(/(///(\:(   ):/)\\)\)\xXxx
+            /((/(/(/(/(\  \ /  /)\\)\\)\xxxxx
+              //(/(/(/(\\ \__/ /)\\\)\)\\ xxx
+           /////(/(/(/(\\\    //)))\)\\)                   *
+              /((/(/(/(/(\\\_///)))\)\\\\)
+               ///(/(/(/(\)) ((/)\)\)\\)\\\
+   *          ///((/(/(/(/)) ((/)\)\))\\)))\
+                (///(/(/(//) ((/\\)\)))\\
+                 ///(/(/(//      \)\\\))\
+                    (/((/        \ \  )
+
+
+                                                                  "
+
+                                                                  
+}                                                               
+
+
+########################################
+#Dragon Ascii Art
+#######################################
+#function dragon_art ()
+
+
+
+
+
+
+
+
+
+
+#######################################
+#Damned King Ascii Art
+######################################
+#function damned_king ()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ############################################################
 # Game Over Function
 ############################################################
@@ -1042,6 +1150,13 @@ case $selection in
         map_selection_menu
 
         ;;
+
+     3) echo " Collect $boss2's head for victory! Warning: This is a tough enemy. "
+        echo_spacer_4
+        damned_king
+        battle_damage_dice_roll_20_damned_paths
+        ;;
+
 esac
 
 }
@@ -1074,7 +1189,8 @@ case $choice in
 
 	2) echo " You have no mercy for thy enemies and will destroy anything that gets in your path. The paths have many damned souls begging for freedom from the paths. Only defeating the $boss2 will free these souls. You must collect his head with the dark crown and set it on fire to free the souls."
 	echo_spacer_4
-	battle_damage_dice_roll_20_damned_paths
+	damned_king
+        battle_damage_dice_roll_20_damned_paths
 	;;
 
 
@@ -1138,8 +1254,12 @@ case $selection in
 
     3) echo " The dragons are near extinction, legend has it that there is a $boss3 guarding all the riches in these dens. If you defeat this creature you will be rich for eternity. "
       echo_spacer_4
+      dragon_art
       battle_damage_dice_roll_20_golden_den
-      ;;
+      
+       ;;
+
+
 
 esac
 
@@ -1172,6 +1292,7 @@ case $choice in
         ;;
     2) echo " You must defeat $boss3 in order Collect its head and acquire all of its gold."
       echo_spacer_4
+      dragon_art
       battle_damage_dice_roll_20_golden_den
      
       ;;
@@ -1235,6 +1356,7 @@ case $selection in
 
     3) echo " $boss4 is the ruler of all powerful dark forces. Her spells are so strong that those who are exposed to it become paralayzed. You must defeat her to leave this lost land for good. She controls this land and all others."
       echo_spacer_4
+      witch_art
       battle_damage_dice_roll_20_witch_valley
       ;;
 
@@ -1269,6 +1391,7 @@ case $choice in
         ;;
     2) echo " You must defeat $boss4 in order to bring light to this valley."
       echo_spacer_4
+      witch_art
       battle_damage_dice_roll_20_witch_valley
      
       ;;
@@ -1662,7 +1785,8 @@ case $choice in
         echo " $boss2 is the ruler of all evil in The Damned Paths ...Defeat him and you will free all enslaved from the damned paths."
 
        	echo_spacer_4
-	battle_damage_dice_roll_20_damned_paths
+	damned_king
+        battle_damage_dice_roll_20_damned_paths
 
 
 
@@ -1729,8 +1853,9 @@ case $choice in
         echo " $boss3 is the ruler of all gold on The Lost Island...You come across his nest of gold as you are wandering the den. He makes an appearance in gold so bright that the sun has no chance. You are blinded by his golden presence and lose site of him. $boss3 is not very happy to see you in his dens."
 
         echo_spacer_7
+        dragon_art
         battle_damage_dice_roll_20_golden_den
-
+        
 
        	;;
 
@@ -1798,6 +1923,7 @@ case $choice in
      4)
         echo " You see lights up ahead as you are wandering the dark valley. Goblets of fire light your path to the entrance. The door is slightly open with the smell of death lingering through its cracks. What do you do next?"
         echo_spacer_7
+        witch_art
         battle_damage_dice_roll_20_witch_valley
        	;;
 
