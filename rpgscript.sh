@@ -272,18 +272,7 @@ echo "
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-############################################################
+###########################################################
 # Game Over Function
 ############################################################
 function game_over () {
@@ -638,16 +627,13 @@ function battle_damage_dice_roll_10_damned_paths ()
 
 
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
-
 read -r
-
 echo_spacer_4
 
 
 battle_damage_dice_roll=$((( RANDOM % 10 )  + 1 ))
 
 echo " You did $battle_damage_dice_roll damage to this creature. "
-
 echo_spacer_4
 
 if [[ $battle_damage_dice_roll -gt 4 ]]
@@ -684,34 +670,25 @@ function battle_damage_dice_roll_20_damned_paths ()
 
 
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
-
 read -r
-
 echo_spacer_4
 
 
 battle_damage_dice_roll=$((( RANDOM % 20 )  + 1 ))
 
 echo " You did $battle_damage_dice_roll damage to this creature. "
-
 echo_spacer_4
 
 if [[ $battle_damage_dice_roll -gt 7 ]]
 then
 echo " You have defeated this creature. "
-
-
-
 echo_spacer_4
-
 randomizing_stats
 unset_function
 map_selection_menu
 
 elif [[ $battle_damage_dice_roll -lt 7 ]]
 then
-                                                  _            _
-
 you_died_action
 
 
@@ -719,11 +696,8 @@ you_died_action
 elif [[ $battle_damage_dice_roll == 7 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
-
 echo_spacer_4
-
 battle_damage_dice_roll_20_damned_paths
-
 
 fi
 
@@ -751,38 +725,31 @@ function battle_damage_dice_roll_10_golden_den ()
 
 
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
-
 read -r
-
 echo_spacer_4
 
 
 battle_damage_dice_roll=$((( RANDOM % 10 )  + 1 ))
 
 echo " You did $battle_damage_dice_roll damage to this creature. "
-
 echo_spacer_4
 
 if [[ $battle_damage_dice_roll -gt 5 ]]
 then
 echo " You have defeated this creature. "
-
 echo_spacer_4
 randomizing_stats
 battle_victory_action_golden_den
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then
-
 you_died_action
 
 
 elif [[ $battle_damage_dice_roll == 5 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
-
 echo_spacer_4
-
 battle_damage_dice_roll_10_golden_den
 
 
@@ -808,26 +775,19 @@ function battle_damage_dice_roll_20_golden_den ()
 
 
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
-
 read -r
-
 echo_spacer_4
 
 
 battle_damage_dice_roll=$((( RANDOM % 20 )  + 1 ))
 
 echo " You did $battle_damage_dice_roll damage to this creature. "
-
 echo_spacer_4
 
 if [[ $battle_damage_dice_roll -gt 9 ]]
 then
 echo " You have defeated this creature. "
-
-
-
 echo_spacer_4
-
 randomizing_stats
 unset_function
 map_selection_menu
@@ -836,18 +796,13 @@ map_selection_menu
 
 elif [[ $battle_damage_dice_roll -lt 9 ]]
 then
-
-
-
 you_died_action            _
 
 
 elif [[ $battle_damage_dice_roll == 9 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
-
 echo_spacer_4
-
 battle_damage_dice_roll_20_golden_den
 
 
@@ -878,42 +833,31 @@ function battle_damage_dice_roll_10_witch_valley ()
 
 
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
-
 read -r
-
 echo_spacer_4
 
 
 battle_damage_dice_roll=$((( RANDOM % 10 )  + 1 ))
 
 echo " You did $battle_damage_dice_roll damage to this creature. "
-
 echo_spacer_4
 
 if [[ $battle_damage_dice_roll -gt 5 ]]
 then
 echo " You have defeated this creature. "
-
-
-
 echo_spacer_4
-
 randomizing_stats
 
 
 elif [[ $battle_damage_dice_roll -lt 5 ]]
 then
-
-
 you_died_action
 
 
 elif [[ $battle_damage_dice_roll == 5 ]]
 then
 echo " You are clashing with this enemy and blocking each others moves. Please roll again to determine the finishing outcome... "
-
 echo_spacer_4
-
 battle_damage_dice_roll_10_witch_valley
 
 
@@ -950,7 +894,6 @@ function battle_damage_dice_roll_20_witch_valley ()
 
 
 echo " Hit enter to roll virtual dice for damage. You must roll a number higher than 5 to destroy this creature. All number clashes will result in a re-roll. "
-
 read -r
 echo_spacer_4
 
@@ -1020,9 +963,6 @@ echo_spacer_4
 
 do
 
-
-
-
 echo " Victory is yours, what will you do now in $map1 ? "
 
      echo "1 -Battle More Creatures"
@@ -1051,7 +991,6 @@ case $selection in
         unset_function
         echo_spacer_4
         map_selection_menu
-
         ;;
 
 
@@ -1062,7 +1001,6 @@ case $selection in
       echo_spacer_4
       possessed_knight
       battle_damage_dice_roll_20_possessed_woods
-      
       ;;
 
 esac
@@ -1098,7 +1036,6 @@ case $choice in
       echo_spacer_4
       possessed_knight
       battle_damage_dice_roll_20_possessed_woods
-     
       ;;
 esac
 
@@ -1141,14 +1078,12 @@ case $selection in
           unset_function
           battle_damage_dice_roll_10_damned_paths
           battle_victory_action_damned_paths_2
-          
           ;;
 
     2) echo " You chose to leave $map2. "
         unset_function
         echo_spacer_4
         map_selection_menu
-
         ;;
 
      3) echo " Collect $boss2's head for victory! Warning: This is a tough enemy. "
@@ -1214,9 +1149,6 @@ echo_spacer_4
 
 do
 
-
-
-
 echo " Victory is yours, what will you do now in $map3 ? "
 
      echo "1 -Battle More Dragons to the Death!"
@@ -1224,9 +1156,7 @@ echo " Victory is yours, what will you do now in $map3 ? "
      echo "3 -Find $boss3"
 
 read -r selection;
-
 clear
-
 done
 
 case $selection in
@@ -1239,13 +1169,12 @@ case $selection in
           unset_function 
           battle_damage_dice_roll_10_golden_den
           battle_victory_action_golden_den_2
-         ;;
+          ;;
 
     2) echo " You chose to leave $map3. "
         unset_function
         echo_spacer_4
         map_selection_menu
-
         ;;
 
 
@@ -1256,8 +1185,7 @@ case $selection in
       echo_spacer_4
       dragon_art
       battle_damage_dice_roll_20_golden_den
-      
-       ;;
+      ;;
 
 
 
@@ -1289,12 +1217,11 @@ case $choice in
     1) echo " You chose to leave $map3. "
        unset_function 
        map_selection_menu
-        ;;
+       ;;
     2) echo " You must defeat $boss3 in order Collect its head and acquire all of its gold."
       echo_spacer_4
       dragon_art
       battle_damage_dice_roll_20_golden_den
-     
       ;;
 esac
 
@@ -1326,9 +1253,7 @@ echo " You are Fierce!, what will you do now in $map4 ? "
      echo "3 -Find $boss4"
 
 read -r selection;
-
 clear
-
 done
 
 case $selection in
@@ -1341,13 +1266,12 @@ case $selection in
           unset_function 
           battle_damage_dice_roll_10_witch_valley
           battle_victory_action_witch_valley_2
-         ;;
+          ;;
 
     2) echo " You chose to leave $map4. "
         unset_function
         echo_spacer_4
         map_selection_menu
-
         ;;
 
 
@@ -1393,7 +1317,6 @@ case $choice in
       echo_spacer_4
       witch_art
       battle_damage_dice_roll_20_witch_valley
-     
       ;;
 esac
 
@@ -1508,9 +1431,7 @@ echo "1 - $char1"
 echo "2 - $char2"
 echo "3 - $char3"
 echo "4 - $char4"
-
 read -r class;
-
 clear
 
 case $class in
@@ -1521,49 +1442,39 @@ case $class in
 	   echo " Character stats are generated at random and will randomize again depending on game progression."
            echo_spacer_7
            create_character_stats
-
-            ;;
-
+           ;;
 
 
-     2) echo " You have chosen $char2. $char2 is known for being quick and stealthy. The shadows are where they reside.."
-        echo_spacer_4
 
-      echo " Character stats are generated at random and will randomize again depending on game progression."
-
+     2) echo " You have chosen $char2. $char2 is known for being quick and stealthy. The shadows are where they reside.."       echo_spacer_4
+        echo " Character stats are generated at random and will randomize again depending on game progression."
       echo_spacer_7
       create_character_stats
-
-            ;;
+          ;;
 
 
      3) echo " You have chosen $char3. $char3 are known for their healing powers. The fairies have granted them with many blessings. "
-
-	echo_spacer_4
+        echo_spacer_4
 
 	echo " Character stats are generated at random and will randomize again depending on game progression."
-
        echo_spacer_7
        create_character_stats
-
-            ;;
+       ;;
 
 
      4) echo " You have chosen $char4. $char4 is out for blood and collects the heads of his enemies as trophies after battle. "
-
-       echo_spacer_4
+        echo_spacer_4
 
      echo " Character stats are generated at random and will randomize again depending on game progression."
      echo_spacer_7
      create_character_stats
-
-         ;;
+        ;;
 
 
 
      *) echo " Please pick a class from the list. "
         character_selection
-		;;
+	;;
 esac
 
 echo_spacer_7
@@ -1605,51 +1516,38 @@ echo " Press enter to embark on your journey...Evil awaits you. "
 read -r
 
 clear
-
 transition_screen
 
 echo " You have arrived ashore to The Lost land in search of glory and riches. Many have said this land is a myth, others have searched for many years and never came back from their expeditions...You are here to bring this myth to reality. "
 
 read -r
-
 map_ascii_art
-
 map_selection_loop
 
 clear
 
 case $explore in
       1) echo " You have chosen to wander $map1. Be aware, Those who wander these woods become possessed by pure evil. "
-
-
-	 echo_spacer_7
+         echo_spacer_7
 	 possessed_woods
-
-
-	 ;;
-
-
-      2) echo " You have chosen to explore the $map2 .....The Damned never sleep and are hungry for flesh. "
-
-
-        echo_spacer_7
-        damned_paths
-
           ;;
 
 
-      3) echo " You have chosen to visit $map3. The heat in these dens keep strangers out.. The gold is said to be precious and breathe taking, many have died in attempt to leave the den with these riches."
+      2) echo " You have chosen to explore the $map2 .....The Damned never sleep and are hungry for flesh. " 
+	echo_spacer_7
+        damned_paths
+	;;
 
+
+      3) echo " You have chosen to visit $map3. The heat in these dens keep strangers out.. The gold is said to be precious and breathe taking, many have died in attempt to leave the den with these riches."
 	 echo_spacer_7
 	 golden_den
 	  ;;
 
       4) echo " You have chosen to walk $map4 .... The magic is strong here,the sun is never present, Stay aware of your surroundings."
-
-
          echo_spacer_7
          witch_valley
-           ;;
+         ;;
 
       *) echo " Please chose your destination for travel.";;
 esac
@@ -1671,16 +1569,12 @@ echo "3 -Leave The Possessed Woods"
 echo "4 -Find The Possessed Knight"
 
 read -r choice;
-
 clear
-
 done
-
 clear
 
 case $choice in
      1) echo " You have decided to wander $map1 and hear footsteps with leaves crumbling behind you.... You turn around and nothing is there. The crumbling begins to grow louder as you keep walking this time you feel a cold breeze on the back of your neck. You turn around once more and encounter a....."
-
       echo_spacer_4
       random_creature_generator_possessed_woods
       echo_spacer_4
@@ -1688,7 +1582,6 @@ case $choice in
        ;;
 
      2) echo " You chose to battle creatures and will fight a... "
-
        echo_spacer_4
        random_creature_generator_possessed_woods
        echo_spacer_4
@@ -1697,32 +1590,19 @@ case $choice in
 
 
      3) echo " You have chose to leave this map.."
-	unset explore
-	unset select
- 	unset choice
-        map_selection_menu
-
+	unset_function
+	map_selection_menu
         ;;
 
       4) echo " With days of searching you have found $boss1's Castle...You are hit with a strong evil force as you enter the gates, sending you flying into a wall. $boss1 makes an appearance with a swing of his bewitched sword near your face as you dodge..."
-
        echo_spacer_7
-
        possessed_knight
-
        echo_spacer_4
-
        battle_damage_dice_roll_20_possessed_woods
+       ;;
 
 
-
-
-        ;;
-
-
-      *)  echo " Please make a selection from the list...."
-
-        ;;
+      *)  echo " Please make a selection from the list...." ;;
 
 esac
 }
@@ -1743,37 +1623,24 @@ echo "3 -Leave The Damned Paths"
 echo "4 -Find The King of The Damned"
 
 read -r choice;
-
 clear
-
 done
-
 clear
 
 case $choice in
      1) echo " You have decided to walk The Damned Paths and encountered...."
-
        echo_spacer_4
        random_creature_generator_damned_paths
        echo_spacer_4
        battle_damage_dice_roll_10_damned_paths
-       
-
-
-
-        ;;
+       ;;
 
      2) echo " The damned are nested in almost every path , you come across a... "
-
        echo_spacer_4
        random_creature_generator_damned_paths
        echo_spacer_4
        battle_damage_dice_roll_10_damned_paths
-       
-
-
-
-        ;;
+       ;;
 
      3) echo " You have chose to leave this map.."
 	unset_function
@@ -1783,14 +1650,10 @@ case $choice in
 
      4)
         echo " $boss2 is the ruler of all evil in The Damned Paths ...Defeat him and you will free all enslaved from the damned paths."
-
-       	echo_spacer_4
+	echo_spacer_4
 	damned_king
         battle_damage_dice_roll_20_damned_paths
-
-
-
-       	;;
+	;;
 
 
       *) echo " Please make a selection from the list....";;
@@ -1814,50 +1677,37 @@ function golden_den ()
 		echo "4 -Find The Golden Dragon"
 
 		read -r choice;
-
-	clear
-
-done
-
 clear
-
+done
+clear
 case $choice in
-     1) echo " You are searching for Gold and have awoken Dragon from its slumber.... He then lunges towards you with all of his might. What will you do next? "
 
+     1) echo " You are searching for Gold and have awoken Dragon from its slumber.... He then lunges towards you with all of his might. What will you do next? "
        echo_spacer_7
        random_creature_generator_golden_den
        echo_spacer_7
        battle_damage_dice_roll_10_golden_den
-
-
-        ;;
+       ;;
 
      2) echo " You ignore all of the precious gold and decide to wake up dragons for battle. "
-
        echo_spacer_7
        random_creature_generator_golden_den
        echo_spacer_7
        battle_damage_dice_roll_10_golden_den
-
-
-        ;;
+       ;;
 
      3) echo " You have chose to leave this map.."
         unset_function
         map_selection_menu
-
 	;;
 
 
      4)
         echo " $boss3 is the ruler of all gold on The Lost Island...You come across his nest of gold as you are wandering the den. He makes an appearance in gold so bright that the sun has no chance. You are blinded by his golden presence and lose site of him. $boss3 is not very happy to see you in his dens."
-
         echo_spacer_7
         dragon_art
         battle_damage_dice_roll_20_golden_den
-        
-
-       	;;
+        ;;
 
 
       *) echo " Please make a selection from the list....";;
@@ -1886,33 +1736,23 @@ function witch_valley ()
 
 		read -r choice;
 
-	clear
-
+clear
 done
-
 clear
 
 case $choice in
      1) echo " You are strolling through the $map4 for potions and remedies to heal your wounds from your on-going battles. The valley is pitch black with little light in sight. A pair of red glowing eyes make an appearance and the air becomes cold. You cannot get a visual of this creature. What will you do next? "
-
        echo_spacer_7
        random_creature_generator_witch_valley
        echo_spacer_7
-
-
-
-        ;;
+       ;;
 
      2) echo " You scream a battle cry in the valley calling out onto all creatures for a challenge. It is silent and all you hear are echoes of your voice. Red lights begin to flicker in all directions...but these are not lights, these are the eyes of blood thirsty enemies. You are now surrounded, what do you do? "
-
        echo_spacer_7
        random_creature_generator_witch_valley
        echo_spacer_7
        battle_damage_dice_roll_10_witch_valley
-
-
-
-        ;;
+       ;;
 
      3) echo " You have chose to leave this map.."
  	unset_function
