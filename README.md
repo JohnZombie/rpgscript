@@ -12,7 +12,9 @@ Ensure that you have github client installed on your OS.
 
 if you are using terminal run: git clone (repo URL)
 
-or you can download it by using wget 
+or you can download it by using wget just paste the below link in terminal
+
+ex: wget https://raw.githubusercontent.com/JohnZombie/rpgscript/master/rpgscript.sh
 
 change directory to rpgscript folder
 
