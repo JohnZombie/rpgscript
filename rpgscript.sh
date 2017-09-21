@@ -664,7 +664,8 @@ esac
 function battle_victory_action_damned_paths_2 ()
 {
 clear
-while [ -z $choice ]do
+while [ -z $choice ]
+do
 echo " what will you do next? "
 echo " 1 - Leave $map2 "
 echo " 2 - Find $boss2 "
@@ -777,7 +778,6 @@ map_selection_menu
 ;;
 3) echo " $boss4 is the ruler of all powerful dark forces. Her spells are so strong that those who are exposed to it become paralayzed. You must defeat her to leave this lost land for good. She controls this land and all others."
 echo_spacer_4
-witch_art
 battle_damage_dice_roll_20_witch_valley
 ;;
 esac
@@ -803,7 +803,6 @@ map_selection_menu
 ;;
 2) echo " You must defeat $boss4 in order to bring light to this valley."
 echo_spacer_4
-witch_art
 battle_damage_dice_roll_20_witch_valley
 ;;
 esac
@@ -1143,7 +1142,6 @@ map_selection_menu
 ;;
 4) echo " You see lights up ahead as you are wandering the dark valley. Goblets of fire light your path to the entrance. The door is slightly open with the smell of death lingering through its cracks. What do you do next?"
 echo_spacer_7
-witch_art
 battle_damage_dice_roll_20_witch_valley
 ;;
 *) echo " Please make a selection from the list....";;
